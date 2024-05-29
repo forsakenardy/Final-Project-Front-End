@@ -2,8 +2,11 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-image: url("https://w0.peakpx.com/wallpaper/136/311/HD-wallpaper-ping-pong-kvitland-nasi-padang-indonesia-komodo-dragon-zedgekomodo-thumbnail.jpg");
+    background-size: cover;
 }
 a {
     text-decoration: none;
+    color: black
 }
 

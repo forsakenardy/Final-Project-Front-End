@@ -12,7 +12,7 @@ function Footer() {
             </div>
             <div className="end">
                 <NavLink to="/aboutUs"><h1>About Us</h1></NavLink>
-                <img className="company-logo" src="" alt="Company Logo" />
+                <img className="company-logo" src="https://i.ibb.co/Kb4tD7K/OIG2-removebg-preview.png" alt="Company Logo" />
             </div>
 
         </div>
