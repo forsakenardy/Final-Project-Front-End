@@ -1,6 +1,8 @@
 import { NavLink, Link } from "react-router-dom"
 import "../styles/navbar.css"
 import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../auth.context";
 
 function NavbarLogged() {
 
