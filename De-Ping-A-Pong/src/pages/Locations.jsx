@@ -1,8 +1,8 @@
-function Location () {
+function Locations () {
     return (
         <>
         </>
     )
 }
 
-export default Location
+export default Locations
