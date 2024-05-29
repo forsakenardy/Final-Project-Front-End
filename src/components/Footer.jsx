@@ -1,3 +1,5 @@
+import { NavLink, Link } from "react-router-dom"
+
 function Footer () {
     return (
        <div>
@@ -7,7 +9,7 @@ function Footer () {
             <img src="" alt="icon2" />
             <img src="" alt="icon3" />
         </div>
-        <h1>About Us</h1>
+        <NavLink to="/aboutUs"><h1>About Us</h1></NavLink>
         <img src="" alt="Company Logo" />
        </div>
     )

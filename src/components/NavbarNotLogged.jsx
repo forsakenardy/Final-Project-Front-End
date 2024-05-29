@@ -1,15 +1,17 @@
-function NavbarNotLogged () {
+import { NavLink, Link } from "react-router-dom"
+
+function NavbarNotLogged() {
     return (
         <div>
             <div>
-                <h1>Home</h1>
-                <h1>Locations</h1>
-                <h1>Events</h1>
+                <NavLink to="/"><h1>Home</h1></NavLink>
+                <NavLink to="/locations"><h1>Locations</h1></NavLink>
+                <NavLink to="/events"><h1>Events</h1></NavLink>
             </div>
             <div>
-                <h1>Sign Up</h1>
-                <h1>Log In</h1>
-            </div> 
+                <NavLink to="/signForm"><h1>Sign Up</h1></NavLink>
+                <NavLink to="/loginForm"><h1>Log In</h1></NavLink>
+            </div>
         </div>
     )
 }

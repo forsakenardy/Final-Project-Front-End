@@ -1,5 +1,5 @@
 import './App.css';
-import { Link, NavLink, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import NavbarLogged from './components/NavbarLogged';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -12,14 +12,12 @@ import SignForm from './pages/SignForm';
 import LoginForm from './pages/LoginForm';
 import ChallengeForm from './pages/ChallengeForm';
 import Matches from './pages/Matches';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   return (
     <>
       <NavbarLogged />
-      <Footer />
-
-
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/locations' element={<Locations />} />
@@ -31,7 +29,12 @@ function App() {
         <Route path='/loginForm' element={<LoginForm />} />
         <Route path='/users/challengeForm' element={<ChallengeForm />} />
         <Route path='/matches' element={<Matches />} />
+        <Route path='/aboutUs' element={<AboutUs />} />
       </Routes>
+      <Footer />
+
+
+
     </>
   );
 }
