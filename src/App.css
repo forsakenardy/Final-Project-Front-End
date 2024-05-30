@@ -12,15 +12,19 @@ a {
 
 .homepage {
     width: 100vw;
-    height: 67vh;
+    height: 70vh;
 
 }
 .first-homepage{
+    margin-top: 2vh;
     width: 100vw;
+    overflow: auto;
+    height: 37vh;
 }
 .homepage-intro {
     width: 45vw;
     margin-left: 5vw;
+    font-size: 30px;
 }
 .offers {
     margin-left: 5vw;
@@ -44,4 +48,6 @@ a {
     left: 55%;
     font-size: 18px;
     width: 40vw;
+    height: 27vh;
+    overflow: auto;
 }
