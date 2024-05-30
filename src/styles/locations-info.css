@@ -1,0 +1,13 @@
+.locationinfo-image {
+    width: 100vw;
+}
+.location-name {
+    line-height: 10%;
+    margin-left: 5vw;
+    padding-top: 1vh;
+    padding-bottom: 5vh ;
+}
+
+.location-info h3 {
+    margin-left: 5vw;
+}
