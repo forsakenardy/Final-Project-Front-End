@@ -39,7 +39,7 @@ function Navbar() {
                 }
                 {!isLoggedIn &&
                     <div className="navlinks ">
-                        <NavLink to="/signForm"><h1>Sign Up</h1></NavLink>
+                        <NavLink to="/signup"><h1>Sign Up</h1></NavLink>
                         <NavLink to="/loginForm"><h1>Log In</h1></NavLink>
                     </div>
                 }

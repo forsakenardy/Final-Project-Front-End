@@ -26,10 +26,10 @@ function App() {
 
   const getLocations = async () => {
     try {
-      const storedToken = localStorage.getItem("authToken");
+     /* const storedToken = localStorage.getItem("authToken");
       if (!storedToken) {
         throw new Error("No auth token found");
-      }
+      }*/
 
       const response = await axios.get(`${API_URL}/locations/`) //,{ headers: { Authorization: `Bearer ${storedToken}` } });
       const locations = response.data;
