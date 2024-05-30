@@ -16,6 +16,7 @@ import Matches from './pages/Matches';
 import AboutUs from './pages/AboutUs';
 import axios from 'axios';
 
+const API_URL = "http://localhost:5005";
 
 const API_URL = "http://localhost:5005";
 
@@ -31,13 +32,15 @@ function App() {
       if (!storedToken) {
         throw new Error("No auth token found");
       }*/
-      const response = await axios.get(`${API_URL}/locations/`) //, { headers: { Authorization: `Bearer ${storedToken}` } });
+
+      const response = await axios.get(`${API_URL}/locations/`) //,{ headers: { Authorization: `Bearer ${storedToken}` } });
       const locations = response.data;
-  
+
       console.log("data is good", locations);
 
       setLocations(locations);
     } catch (error) {
+
       console.log("there's an error", error)
     }
   }
