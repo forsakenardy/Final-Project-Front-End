@@ -18,7 +18,6 @@ import axios from 'axios';
 
 const API_URL = "http://localhost:5005";
 
-const API_URL = "http://localhost:5005";
 
 function App() {
 
@@ -58,7 +57,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/locations' element={<Locations locations={locations} />} />
         <Route path='/users' element={<Users />} />
-        <Route path='/locations/:locationId' element={<LocationInfo />} />
+        <Route path='/locations/:locationId' element={<LocationInfo locations={locations} getLocations={getLocations} />} />
         <Route path='/events' element={<Events />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/signForm' element={<SignForm />} />
