@@ -14,6 +14,8 @@ import LoginForm from './pages/LoginForm';
 import ChallengeForm from './pages/ChallengeForm';
 import Matches from './pages/Matches';
 import AboutUs from './pages/AboutUs';
+import IsAnon from './components/isAnon';
+import IsPrivate from './components/isPrivate';
 import axios from 'axios';
 
 const API_URL = "http://localhost:5005";
@@ -55,14 +57,14 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/locations' element={<Locations locations={locations} />} />
-        <Route path='/users' element={<Users />} />
+        <Route path='/users' element={<IsPrivate><Users /> </IsPrivate>} />
         <Route path='/locations/:locationId' element={<LocationInfo locations={locations} getLocations={getLocations} />} />
         <Route path='/events' element={<Events />} />
         <Route path='/profile' element={<Profile />} />
-        <Route path='/signup' element={<SignupPage />} />
-        <Route path='/loginForm' element={<LoginForm />} />
-        <Route path='/users/challengeForm' element={<ChallengeForm />} />
-        <Route path='/matches' element={<Matches />} />
+        <Route path='/signup' element={<IsAnon><SignupPage /></IsAnon>} />
+        <Route path='/loginForm' element={<IsAnon><LoginForm /> </IsAnon> } />
+        <Route path='/users/challengeForm' element={<IsPrivate> <ChallengeForm /> </IsPrivate>} />
+        <Route path='/matches' element={<IsPrivate> <Matches /> </IsPrivate>} />
         <Route path='/aboutUs' element={<AboutUs />} />
       </Routes>
       <Footer />
