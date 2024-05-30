@@ -34,7 +34,10 @@ function Navbar() {
              
                         <NavLink to="/profile"><h1>View Profile</h1></NavLink>
                         <NavLink to="/matches"><h1>Play's History</h1></NavLink>
-                        <Link to="/"><button onClick={logOutUser}>Log Out</button></Link>
+                        <Link to="/"><button onClick={() =>{
+                            logOutUser()
+                            toggleClass()
+                            }}>Log Out</button></Link>
                         <span>{user && user.name}</span>
                     </div>
                 }
