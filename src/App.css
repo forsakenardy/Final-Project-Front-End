@@ -34,20 +34,21 @@ a {
 .homepage ul {
     width: 38vw;
 }
-
+.homepage-end-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3vh;
+    height: 30vh;
+}
 .homepage-info{
-    position: absolute;
-    top: 51%;
-    height: 28vh;
+    height: 27vh;
     overflow: auto;
 }
 
 .end-info {
-    position: absolute;
-    top: 51%;
-    left: 55%;
     font-size: 18px;
     width: 40vw;
-    height: 27vh;
+    height: 25vh;
     overflow: auto;
 }
