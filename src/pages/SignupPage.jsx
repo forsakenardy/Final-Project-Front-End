@@ -47,11 +47,12 @@ function SignupPage(props) {
                     <option value="madrid">Madrid</option>
                     <option value="la habana">La Habana</option>
                 </select>
+                <button type="submit">Sign Up</button>
             </form>
 
             {errorMessage && <p>{errorMessage}</p> }
             <p>Already have an account?</p>
-            <Link to="/pages/Loginform">Login</Link>
+            <Link to="/Loginform">Login</Link>
         </div>
     )
 }

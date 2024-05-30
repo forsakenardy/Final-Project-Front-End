@@ -9,7 +9,7 @@ import Users from './pages/Users';
 import LocationInfo from './pages/LocationInfo';
 import Events from './pages/Events';
 import Profile from './pages/Profile';
-import SignForm from './pages/SignForm';
+import SignupPage from './pages/SignupPage';
 import LoginForm from './pages/LoginForm';
 import ChallengeForm from './pages/ChallengeForm';
 import Matches from './pages/Matches';
@@ -26,10 +26,10 @@ function App() {
 
   const getLocations = async () => {
     try {
-      /*const storedToken = localStorage.getItem("authToken");
+      const storedToken = localStorage.getItem("authToken");
       if (!storedToken) {
         throw new Error("No auth token found");
-      }*/
+      }
 
       const response = await axios.get(`${API_URL}/locations/`) //,{ headers: { Authorization: `Bearer ${storedToken}` } });
       const locations = response.data;
@@ -59,7 +59,7 @@ function App() {
         <Route path='/locations/:locationId' element={<LocationInfo locations={locations} getLocations={getLocations} />} />
         <Route path='/events' element={<Events />} />
         <Route path='/profile' element={<Profile />} />
-        <Route path='/signForm' element={<SignForm />} />
+        <Route path='/signup' element={<SignupPage />} />
         <Route path='/loginForm' element={<LoginForm />} />
         <Route path='/users/challengeForm' element={<ChallengeForm />} />
         <Route path='/matches' element={<Matches />} />
