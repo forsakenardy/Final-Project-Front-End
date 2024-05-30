@@ -3,11 +3,45 @@ body {
     padding: 0;
     box-sizing: border-box;
     background-image: url("https://w0.peakpx.com/wallpaper/136/311/HD-wallpaper-ping-pong-kvitland-nasi-padang-indonesia-komodo-dragon-zedgekomodo-thumbnail.jpg");
-    background-size: cover;
+    background-size: 100% 100%;
 }
 a {
     text-decoration: none;
     color: black
 }
 
+.homepage {
+    width: 100vw;
+    height: 67vh;
 
+}
+.first-homepage{
+    width: 100vw;
+}
+.homepage-intro {
+    width: 45vw;
+    margin-left: 5vw;
+}
+.offers {
+    margin-left: 5vw;
+    font-size: 14px;
+    width: 40vw;
+}
+.homepage ul {
+    width: 38vw;
+}
+
+.homepage-info{
+    position: absolute;
+    top: 51%;
+    height: 28vh;
+    overflow: auto;
+}
+
+.end-info {
+    position: absolute;
+    top: 51%;
+    left: 55%;
+    font-size: 18px;
+    width: 40vw;
+}
