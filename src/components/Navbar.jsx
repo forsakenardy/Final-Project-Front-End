@@ -13,7 +13,7 @@ function Navbar() {
         setIsPressed((prevState) => !prevState);
     };
 
-    const { isLoggedIn, user } = useContext(AuthContext);
+    const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
 
     return (
@@ -34,7 +34,8 @@ function Navbar() {
              
                         <NavLink to="/profile"><h1>View Profile</h1></NavLink>
                         <NavLink to="/matches"><h1>Play's History</h1></NavLink>
-                        <Link to="/"><h1>Log Out</h1></Link>
+                        <Link to="/"><button onClick={logOutUser}>Log Out</button></Link>
+                        <span>{user && user.name}</span>
                     </div>
                 }
                 {!isLoggedIn &&
