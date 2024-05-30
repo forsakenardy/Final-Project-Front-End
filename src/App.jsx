@@ -18,6 +18,8 @@ import axios from 'axios';
 
 const API_URL = "http://localhost:5005";
 
+const API_URL = "http://localhost:5005";
+
 function App() {
 
 
@@ -30,15 +32,19 @@ function App() {
       if (!storedToken) {
         throw new Error("No auth token found");
       }*/
+
       const response = await axios.get(`${API_URL}/locations/`) //,{ headers: { Authorization: `Bearer ${storedToken}` } });
       const locations = response.data;
+
       console.log("data is good", locations);
 
       setLocations(locations);
     } catch (error) {
-      console.error("there's an error", error)
+
+      console.log("there's an error", error)
     }
   }
+
 
   useEffect(() => {
     getLocations();

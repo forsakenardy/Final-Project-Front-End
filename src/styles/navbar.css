@@ -5,6 +5,7 @@
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid black;
+    background-color: rgb(220, 98, 120);
 }
 
 .navlinks {
@@ -22,7 +23,6 @@
     position: absolute;
     width: 100vw;
     height: 25vh;
-    top: 10vh;
     left: 0;
     display: flex;
     flex-direction: column;
