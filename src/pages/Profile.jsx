@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../styles/profile.css"
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -43,7 +44,7 @@ function Profile({ profile, getProfile }) {
                 throw new Error('Failed to update profile');
             }
 
-           getProfile();
+            getProfile();
             setIsEditing(false);
         } catch (error) {
             console.error("Failed to update profile:", error);
@@ -70,33 +71,86 @@ function Profile({ profile, getProfile }) {
     return (
         <div className="profile">
             <div>
-                <img src={profileCard.imageUrl} alt={`${profileCard.name}'s profile`} />
                 {isEditing ? (
-                    <>
-                        <input
-                            type="text"
-                            name="name"
-                            value={editedProfile.name}
-                            onChange={handleChange}
-                        />
-                        <input
-                            type="text"
-                            name="phoneNumber"
-                            value={editedProfile.phoneNumber}
-                            onChange={handleChange}
-                        />
+                    <div className="editor">
+                        <div className="edit-name">
+                            <label >Set New Name:</label>
+                            <input
+                             placeholder="Full Name"
+                                type="text"
+                                name="name"
+                                value={editedProfile.name}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="edit=phone">
+                            <label >New Phone Number:</label>
+                            <input
+                             placeholder="Only digits"
+                                type="text"
+                                name="phoneNumber"
+                                value={editedProfile.phoneNumber}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="edit-location">
+                            <label > where are u now?:</label>
+                            <input
+                                type="text"
+                                name="location"
+                                value={editedProfile.location}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="edit-image">
+                            <label >New image url:</label>
+                            <input
+                            placeholder="Incert a valid url"
+                                type="text"
+                                name="image"
+                                value={editedProfile.image}
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <div className="edit-description">
+                            <label >Write something about you:</label>
+                            <input
+                             placeholder="I am the best player"
+                                type="text"
+                                name="description"
+                                value={editedProfile.description}
+                                onChange={handleChange}
+                            />
+                        </div>
                         <button onClick={handleSaveClick}>Save</button>
                         <button onClick={handleCancelClick}>Cancel</button>
-                    </>
+                    </div>
                 ) : (
-                    <>
-                        <h1>{profileCard.name}</h1>
-                        <p>{profileCard.email}</p>
-                        <h1>{profileCard.phoneNumber}</h1>
-                        <button onClick={handleEditClick}>Edit Profile</button>
-                    </>
+                    <div className="my-profile">
+                        <div className="left-profile">
+                            <img className="profile-image" src={profileCard.image} alt="profile image" />
+                            <h1>{profileCard.name}</h1>
+                            <p>email: {profileCard.email}</p>
+                            <p>phone number: {profileCard.phoneNumber}</p>
+                            <h1>Elo: {profileCard.rank}</h1>
+                            <button onClick={handleEditClick}>Edit Profile</button>
+                        </div>
+                        <div className="right-profile">
+                            <h1>Location: </h1>
+                            <h3>{profileCard.location}</h3>
+                            <h1>Description: </h1>
+                            <h2>{profileCard.description}</h2>
+                        </div>
+
+
+
+
+
+
+                    </div>
                 )}
             </div>
+
             <div>
             </div>
         </div>
