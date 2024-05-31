@@ -109,7 +109,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/locations' element={<Locations locations={locations} />} />
-        <Route path='/users' element={<IsPrivate><Users /> </IsPrivate>} />
+        <Route path='/users' element={<IsPrivate><Users profile={profile} /> </IsPrivate>} />
         <Route path='/locations/:locationId' element={<LocationInfo locations={locations} getLocations={getLocations} />} />
         <Route path='/events' element={<Events events={events} />} />
         <Route path='/profile/:profileId' element={<Profile  profile={profile} getProfile={getProfile}/>} />
