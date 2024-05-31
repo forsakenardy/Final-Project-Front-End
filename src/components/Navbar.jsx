@@ -8,7 +8,6 @@ function Navbar() {
 
     const [isPressed, setIsPressed] = useState(false);
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-    console.log("user", user);
     const toggleClass = () => {
 
         setIsPressed((prevState) => !prevState);
