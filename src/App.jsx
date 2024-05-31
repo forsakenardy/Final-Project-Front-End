@@ -25,9 +25,22 @@ function App() {
 
   const [locations, setLocations] = useState([])
   const [events, setEvents] = useState([])
+  const [match, setMatch] = useState([])
   const [profile, setProfile] = useState([])
 
 
+/*const createMatch = async()=>{
+  try{
+    const storedToken = localStorage.getItem("authToken");
+    if(!storedToken){
+      throw new Error("No auth token found");
+    }
+    const newMatch = axios.post(`${API_URL}/matches/`, {headers: {Authorization: `Bearer ${storedToken}`}})
+    setMatch([newMatch, ...match])
+  }catch(error){
+    console.log("There is an error creating a new match")
+  }
+}*/
   const getLocations = async () => {
     try {
      /* const storedToken = localStorage.getItem("authToken");
@@ -103,7 +116,7 @@ function App() {
         <Route path='/signup' element={<IsAnon><SignupPage /></IsAnon>} />
         <Route path='/loginForm' element={<IsAnon><LoginForm /> </IsAnon> } />
         <Route path='/users/challengeForm' element={<IsPrivate> <ChallengeForm /> </IsPrivate>} />
-        <Route path='/matches' element={<IsPrivate> <Matches /> </IsPrivate>} />
+        <Route path='/matches' element={<IsPrivate> <Matches match={match} createMatch={createMatch}/> </IsPrivate>} />
         <Route path='/aboutUs' element={<AboutUs />} />
       </Routes>
       <Footer />
