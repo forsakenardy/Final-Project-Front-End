@@ -85,7 +85,7 @@ function App() {
         throw new Error("No auth token found");
       }*/
 
-      const response = await axios.get(`${API_URL}/verify/`) //,{ headers: { Authorization: `Bearer ${storedToken}` } });
+      const response = await axios.get(`${API_URL}/users/`) //,{ headers: { Authorization: `Bearer ${storedToken}` } });
       const profile = response.data;
 
       console.log("data is good", profile);
@@ -105,18 +105,18 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar profile={profile}/>
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/locations' element={<Locations locations={locations} />} />
         <Route path='/users' element={<IsPrivate><Users /> </IsPrivate>} />
         <Route path='/locations/:locationId' element={<LocationInfo locations={locations} getLocations={getLocations} />} />
         <Route path='/events' element={<Events events={events} />} />
-        <Route path='/profile' element={<Profile  profile={profile} getProfile={getProfile}/>} />
+        <Route path='/profile/:profileId' element={<Profile  profile={profile} getProfile={getProfile}/>} />
         <Route path='/signup' element={<IsAnon><SignupPage /></IsAnon>} />
         <Route path='/loginForm' element={<IsAnon><LoginForm /> </IsAnon> } />
         <Route path='/users/challengeForm' element={<IsPrivate> <ChallengeForm /> </IsPrivate>} />
-        <Route path='/matches' element={<IsPrivate> <Matches match={match} createMatch={createMatch}/> </IsPrivate>} />
+        <Route path='/matches' element={<IsPrivate> <Matches match={match} /*createMatch={createMatch}*//> </IsPrivate>} />
         <Route path='/aboutUs' element={<AboutUs />} />
       </Routes>
       <Footer />

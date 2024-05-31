@@ -7,13 +7,13 @@ import { AuthContext } from "../auth.context";
 function Navbar() {
 
     const [isPressed, setIsPressed] = useState(false);
-
+    const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+    console.log("user", user);
     const toggleClass = () => {
 
         setIsPressed((prevState) => !prevState);
     };
 
-    const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
 
     return (
@@ -27,17 +27,17 @@ function Navbar() {
                     {isLoggedIn && <NavLink to="/users"><h1>Users</h1></NavLink>}
                 </div>
                 {isLoggedIn &&
-                <img onClick={toggleClass} className="perfil-image" src="" alt="perfil image" />
-            }
+                    <img onClick={toggleClass} className="perfil-image" src="" alt="perfil image" />
+                }
                 {isLoggedIn &&
                     <div className={isPressed ? 'menu-links' : 'hidden'}>
-             
-                        <NavLink to="/profile"><h1>View Profile</h1></NavLink>
+
+                        <NavLink to={`/profile/${user._id}`}><h1>View Profile</h1></NavLink>
                         <NavLink to="/matches"><h1>Play's History</h1></NavLink>
-                        <Link to="/"><button onClick={() =>{
+                        <Link to="/"><button onClick={() => {
                             logOutUser()
                             toggleClass()
-                            }}>Log Out</button></Link>
+                        }}>Log Out</button></Link>
                         <span>{user && user.name}</span>
                     </div>
                 }

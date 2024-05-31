@@ -1,0 +1,12 @@
+.signup-form {
+    background-color: rgb(194, 186, 80);
+    width: 90vw;
+    margin-left: 5vw;
+    padding-top: 1vh;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    border-radius: 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
