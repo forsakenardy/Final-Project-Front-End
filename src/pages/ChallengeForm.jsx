@@ -1,4 +1,5 @@
-function ChallengeForm () {
+function ChallengeForm ({match}) {
+    
     return (
         <>
         </>

@@ -25,6 +25,7 @@ function Navbar() {
                     <NavLink to="/events"><h1>Events</h1></NavLink>
 
                     {isLoggedIn && <NavLink to="/users"><h1>Users</h1></NavLink>}
+                    {isLoggedIn && <NavLink to="/creatematches"><h1>Matches</h1></NavLink>}
                 </div>
                 {isLoggedIn &&
                 <img onClick={toggleClass} className="perfil-image" src="" alt="perfil image" />
