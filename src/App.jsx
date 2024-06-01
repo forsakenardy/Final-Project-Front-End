@@ -85,9 +85,7 @@ function App() {
         throw new Error("No auth token found");
       }
 
-
-      const response = await axios.get(`${API_URL}/auth/verify/`,{ headers: { Authorization: `Bearer ${storedToken}` } });
-
+      const response = await axios.get(`${API_URL}/users/`) //,{ headers: { Authorization: `Bearer ${storedToken}` } });
       const profile = response.data;
 
       console.log("data is good", profile);
