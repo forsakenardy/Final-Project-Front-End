@@ -80,12 +80,14 @@ function App() {
   }
   const getProfile = async () => {
     try {
-     /* const storedToken = localStorage.getItem("authToken");
+      const storedToken = localStorage.getItem("authToken");
       if (!storedToken) {
         throw new Error("No auth token found");
-      }*/
+      }
 
-      const response = await axios.get(`${API_URL}/users/`) //,{ headers: { Authorization: `Bearer ${storedToken}` } });
+
+      const response = await axios.get(`${API_URL}/auth/verify/`,{ headers: { Authorization: `Bearer ${storedToken}` } });
+
       const profile = response.data;
 
       console.log("data is good", profile);
@@ -115,8 +117,10 @@ function App() {
         <Route path='/profile/:profileId' element={<Profile  profile={profile} getProfile={getProfile}/>} />
         <Route path='/signup' element={<IsAnon><SignupPage /></IsAnon>} />
         <Route path='/loginForm' element={<IsAnon><LoginForm /> </IsAnon> } />
-        <Route path='/users/challengeForm' element={<IsPrivate> <ChallengeForm /> </IsPrivate>} />
-        <Route path='/matches' element={<IsPrivate> <Matches match={match} /*createMatch={createMatch}*//> </IsPrivate>} />
+
+        <Route path='/users/challengeForm' element={<IsPrivate> <ChallengeForm match={match} /> </IsPrivate>} />
+        <Route path='/creatematches' element={<IsPrivate> <Matches match={match} locations={locations} getLocations={getLocations} /*createMatch={createMatch}*//> </IsPrivate>} />
+
         <Route path='/aboutUs' element={<AboutUs />} />
       </Routes>
       <Footer />
