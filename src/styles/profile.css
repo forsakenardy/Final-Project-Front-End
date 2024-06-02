@@ -1,0 +1,22 @@
+.my-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.left-profile {
+    width: 40vw;
+    margin-left: 5vw;
+    text-align: start;
+}
+
+.profile-image {
+    width: 30vw;
+    height: 30vw;
+    border-radius: 50%;
+    margin-top: 5vw;
+    margin-left: 5vw;
+}
+.right-profile {
+    width: 48vw;
+}
