@@ -1,16 +1,31 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../auth.context";
 import "../styles/events.css";
 
 function Events({ events }) {
-    const { isLoggedIn } = useContext(AuthContext);
-    const [signedUpEventIds, setSignedUpEventIds] = useState([]); // Define el estado
+    const { isLoggedIn, user } = useContext(AuthContext);
+    const userId = user ? user._id : null;
+
+    const [signedUpEventIds, setSignedUpEventIds] = useState(() => {
+        const savedIds = localStorage.getItem(`signedUpEventIds_${userId}`);
+        return savedIds ? JSON.parse(savedIds) : [];
+    });
+
+    useEffect(() => {
+        if (userId) {
+            localStorage.setItem(`signedUpEventIds_${userId}`, JSON.stringify(signedUpEventIds));
+        }
+    }, [signedUpEventIds, userId]);
 
     const handleSignUpClick = (eventId) => {
-        if (!signedUpEventIds.includes(eventId)) { // Evitar duplicados
-            setSignedUpEventIds([...signedUpEventIds, eventId]); // Añadir el ID del evento al array
+        if (!signedUpEventIds.includes(eventId)) {
+            setSignedUpEventIds([...signedUpEventIds, eventId]);
         }
     };
+
+    if (!userId) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="events">
@@ -25,9 +40,12 @@ function Events({ events }) {
                         <p>Location: {event.location}</p>
                         <p>ELO Range: {event.elo_range.min} - {event.elo_range.max}</p>
                         {isLoggedIn && (
-                            <button onClick={() => handleSignUpClick(event._id)}>Apuntarse</button> // Añadir el onClick con event ID
+                            !signedUpEventIds.includes(event._id) ? (
+                                <button onClick={() => handleSignUpClick(event._id)}>Join</button>
+                            ) : (
+                                <h1>You have signed up</h1>
+                            )
                         )}
-                        {signedUpEventIds.includes(event._id) && <h1>You have signed up</h1>} // Renderizado condicional
                     </div>
                 </div>
             ))}
