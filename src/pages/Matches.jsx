@@ -8,7 +8,7 @@ import axios from "axios"
 const API_URL = import.meta.env.VITE_API_URL;
 
 
-function Matches({ match, locations, getLocations, /*createMatches*/ }) {
+function Matches({ match, locations, getLocations}) {
     const [location, setLocation] = useState("665854f95f1cf9b18bc43d45");
     const [day, setDay] = useState("");
     const [time, setTime] = useState("09:00");
@@ -29,7 +29,7 @@ function Matches({ match, locations, getLocations, /*createMatches*/ }) {
         console.log(requestBody)
         axios.post(`${API_URL}/matches/`, requestBody)
             .then((data) => {
-                navigate("/matches")
+                navigate("/challengeForm")
 
             })
             .catch((error) => {

@@ -25,22 +25,24 @@ function App() {
 
   const [locations, setLocations] = useState([])
   const [events, setEvents] = useState([])
-  const [match, setMatch] = useState([])
+  const [matches, setMatches] = useState([])
   const [profile, setProfile] = useState([])
 
 
-/*const createMatch = async()=>{
+const getMatch = async()=>{
   try{
     const storedToken = localStorage.getItem("authToken");
     if(!storedToken){
       throw new Error("No auth token found");
     }
-    const newMatch = axios.post(`${API_URL}/matches/`, {headers: {Authorization: `Bearer ${storedToken}`}})
-    setMatch([newMatch, ...match])
+    const response = await axios.get(`${API_URL}/matches/`, {headers: {Authorization: `Bearer ${storedToken}`}})
+    const matches = response.data;
+    console.log("matches taken", matches);
+    setMatches(matches)
   }catch(error){
-    console.log("There is an error creating a new match")
+    console.log("There is an error creating a new match", error)
   }
-}*/
+}
   const getLocations = async () => {
     try {
      /* const storedToken = localStorage.getItem("authToken");
@@ -85,7 +87,8 @@ function App() {
         throw new Error("No auth token found");
       }
 
-      const response = await axios.get(`${API_URL}/users/`) //,{ headers: { Authorization: `Bearer ${storedToken}` } });
+      const response = await axios.get(`${API_URL}/users/`,{ headers: { Authorization: `Bearer ${storedToken}` } });
+
       const profile = response.data;
 
       console.log("data is good", profile);
@@ -99,7 +102,8 @@ function App() {
   useEffect(() => {
     getLocations();
     getEvents();
-    getProfile()
+    getProfile();
+    getMatch()
   }, [])
 
 
@@ -115,8 +119,9 @@ function App() {
         <Route path='/profile/:profileId' element={<Profile  profile={profile} getProfile={getProfile}/>} />
         <Route path='/signup' element={<IsAnon><SignupPage /></IsAnon>} />
         <Route path='/loginForm' element={<IsAnon><LoginForm /> </IsAnon> } />
-        <Route path='/users/challengeForm' element={<IsPrivate> <ChallengeForm match={match} /> </IsPrivate>} />
-        <Route path='/creatematches' element={<IsPrivate> <Matches match={match} locations={locations} getLocations={getLocations} /*createMatch={createMatch}*//> </IsPrivate>} />
+        <Route path='/users/challengeform' element={<IsPrivate> <ChallengeForm matches={matches} locations={locations} getMatch={getMatch}  /> </IsPrivate>} />
+        <Route path='/creatematches' element={<IsPrivate> <Matches matches={matches} locations={locations}/> </IsPrivate>} />
+
         <Route path='/aboutUs' element={<AboutUs />} />
       </Routes>
       <Footer />
