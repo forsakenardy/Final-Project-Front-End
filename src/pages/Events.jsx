@@ -23,6 +23,11 @@ function Events({ events }) {
         }
     };
 
+    const handleCancelSignUpClick = (eventId) => {
+        const updatedEventIds = signedUpEventIds.filter(id => id !== eventId);
+        setSignedUpEventIds(updatedEventIds);
+    };
+
     if (!userId) {
         return <div>Loading...</div>;
     }
@@ -41,9 +46,14 @@ function Events({ events }) {
                         <p>ELO Range: {event.elo_range.min} - {event.elo_range.max}</p>
                         {isLoggedIn && (
                             !signedUpEventIds.includes(event._id) ? (
-                                <button onClick={() => handleSignUpClick(event._id)}>Join</button>
+                                <div>
+                                    <button onClick={() => handleSignUpClick(event._id)}>Join</button>
+                                </div>
                             ) : (
-                                <h1>You have signed up</h1>
+                                <div>
+                                    <h1>You have signed up</h1>
+                                    <button onClick={() => handleCancelSignUpClick(event._id)}>Cancel</button>
+                                </div>
                             )
                         )}
                     </div>
