@@ -8,7 +8,7 @@ function SignupPage(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
-    const [location, setLocation] = useState("");
+    const [location, setLocation] = useState("Bilbao");
     const [errorMessage, setErrorMessage] = useState(undefined)
 
     const navigate = useNavigate();

@@ -4,7 +4,7 @@ function Users({ profile }) {
     return (
         <div className="users">
             {
-                profile.map((user) => {
+               profile && profile.map((user) => {
                     return (
                         <div className="user-card">
                             <h2>{user.name}</h2>
