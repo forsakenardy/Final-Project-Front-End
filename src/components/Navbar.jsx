@@ -31,7 +31,7 @@ function Navbar() {
                 {isLoggedIn &&
                     <div className={isPressed ? 'menu-links' : 'hidden'}>
                         <NavLink onClick={toggleClass} to={`/profile/${user._id}`}><h1>View Profile</h1></NavLink>
-                        <NavLink onClick={toggleClass} to="/matches"><h1>Play's History</h1></NavLink>
+                        <NavLink onClick={toggleClass} to="/users/challengeform"><h1>Play's History</h1></NavLink>
                         <Link to="/"><button onClick={() => {
                             logOutUser()
                             toggleClass()
