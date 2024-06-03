@@ -1,6 +1,8 @@
 import "../styles/users.css"
+import { NavLink } from "react-router-dom"
 
-function Users({ profile }) {   
+function Users({ profile }) {
+
     return (
         <div className="users">
             {
@@ -10,7 +12,8 @@ function Users({ profile }) {
                             <h2>{user.name}</h2>
                             <h2>{`rank: ${user.rank}`}</h2>
                             <h2>{`location: ${user.location}`}</h2>
-                            <button>Send a challenge</button>
+                            <NavLink to="/creatematches" ><button>Send a challenge</button></NavLink>
+
                         </div>
                     )
                 }
