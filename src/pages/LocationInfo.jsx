@@ -6,7 +6,7 @@ import "../styles/locations-info.css";
 function LocationInfo({ locations, getLocations }) {
     const { locationId } = useParams();
     const navigate = useNavigate();
-    const { isLoggedIn } = useContext(AuthContext); // Accede al contexto de autenticación
+    const { isLoggedIn } = useContext(AuthContext); 
 
     const [locationCard, setLocationCard] = useState(null);
 
@@ -40,7 +40,7 @@ function LocationInfo({ locations, getLocations }) {
             <h3 className="location-barServise">{locationCard.barService ? "We have bar service" : "We don't have bar service"}</h3>
             <p className="location-description">{locationCard.description}</p>
             {isLoggedIn && (
-                <button className="reservar">Reservar</button>
+                <button className="reservar">Reserve</button>
             )}
         </div>
     );

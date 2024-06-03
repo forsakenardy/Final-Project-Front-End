@@ -87,8 +87,8 @@ const getMatch = async()=>{
         throw new Error("No auth token found");
       }
 
-   
-      const response = await axios.get(`${API_URL}/auth/verify/`,{ headers: { Authorization: `Bearer ${storedToken}` } });
+      const response = await axios.get(`${API_URL}/users/`,{ headers: { Authorization: `Bearer ${storedToken}` } });
+
       const profile = response.data;
 
       console.log("data is good", profile);
@@ -115,12 +115,13 @@ const getMatch = async()=>{
         <Route path='/locations' element={<Locations locations={locations} />} />
         <Route path='/users' element={<IsPrivate><Users profile={profile} /> </IsPrivate>} />
         <Route path='/locations/:locationId' element={<LocationInfo locations={locations} getLocations={getLocations} />} />
-        <Route path='/events' element={<Events events={events} />} />
+        <Route path='/events' element={<Events events={events} setEvents={setEvents} />} />
         <Route path='/profile/:profileId' element={<Profile  profile={profile} getProfile={getProfile}/>} />
         <Route path='/signup' element={<IsAnon><SignupPage /></IsAnon>} />
         <Route path='/loginForm' element={<IsAnon><LoginForm /> </IsAnon> } />
         <Route path='/users/challengeform' element={<IsPrivate> <ChallengeForm matches={matches} locations={locations} getMatch={getMatch}  /> </IsPrivate>} />
         <Route path='/creatematches' element={<IsPrivate> <Matches matches={matches} locations={locations}/> </IsPrivate>} />
+
         <Route path='/aboutUs' element={<AboutUs />} />
       </Routes>
       <Footer />
