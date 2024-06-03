@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Navigate, useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import axios from "axios"
@@ -8,7 +8,7 @@ import axios from "axios"
 const API_URL = import.meta.env.VITE_API_URL;
 
 
-function Matches({ match, locations, getLocations}) {
+function Matches({ match, locations, getMatch, getLocations}) {
     const [location, setLocation] = useState("665854f95f1cf9b18bc43d45");
     const [day, setDay] = useState("");
     const [time, setTime] = useState("09:00");
@@ -24,12 +24,13 @@ function Matches({ match, locations, getLocations}) {
 
     const handleMatchSubmit = (e) => {
 
-        e.preventDefault();
+       e.preventDefault();
         const requestBody = { location, day, time, comment, pairs }; 
         console.log(requestBody)
         axios.post(`${API_URL}/matches/`, requestBody)
             .then((data) => {
-                navigate("/challengeForm")
+                getMatch();
+                navigate("/users/challengeform");
 
             })
             .catch((error) => {
@@ -37,6 +38,8 @@ function Matches({ match, locations, getLocations}) {
                 console.log("there's been some kind of error", error)
             })
     }
+
+
 
     return (
         <div>

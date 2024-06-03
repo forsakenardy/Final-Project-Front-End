@@ -120,7 +120,7 @@ const getMatch = async()=>{
         <Route path='/signup' element={<IsAnon><SignupPage /></IsAnon>} />
         <Route path='/loginForm' element={<IsAnon><LoginForm /> </IsAnon> } />
         <Route path='/users/challengeform' element={<IsPrivate> <ChallengeForm matches={matches} locations={locations} getMatch={getMatch}  /> </IsPrivate>} />
-        <Route path='/creatematches' element={<IsPrivate> <Matches matches={matches} locations={locations}/> </IsPrivate>} />
+        <Route path='/creatematches' element={<IsPrivate> <Matches matches={matches} locations={locations} getMatch={getMatch}/> </IsPrivate>} />
 
         <Route path='/aboutUs' element={<AboutUs />} />
       </Routes>
