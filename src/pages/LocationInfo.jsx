@@ -6,7 +6,7 @@ import "../styles/locations-info.css";
 function LocationInfo({ locations, getLocations }) {
     const { locationId } = useParams();
     const navigate = useNavigate();
-    const { isLoggedIn } = useContext(AuthContext); 
+    const { isLoggedIn } = useContext(AuthContext);
 
     const [locationCard, setLocationCard] = useState(null);
 
@@ -39,9 +39,16 @@ function LocationInfo({ locations, getLocations }) {
             <h3 className="location-net">{`type of net: ${locationCard.net}`}</h3>
             <h3 className="location-barServise">{locationCard.barService ? "We have bar service" : "We don't have bar service"}</h3>
             <p className="location-description">{locationCard.description}</p>
-            {isLoggedIn && (
-                <button className="reservar">Reserve</button>
-            )}
+            <ul>
+                {locationCard.horarios.map((horario, index) => (
+                    <li key={index}>
+                        <h3>From: {horario.horaInicio} to: {horario.horaFin}</h3>
+                        {isLoggedIn && (
+                            <button className="reservar">Reserve</button>
+                        )}
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }

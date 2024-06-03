@@ -28,8 +28,6 @@ function Events({ events, setEvents }) {
                 if (!response.ok) {
                     throw new Error("Error al apuntarse al evento");
                 }
-
-                // Obtener la lista de eventos actualizada del servidor después de la inscripción
                 const updatedEvents = await fetchEvents();
                 setEvents(updatedEvents);
 
@@ -56,8 +54,6 @@ function Events({ events, setEvents }) {
             if (!response.ok) {
                 throw new Error("Error al cancelar la inscripción del evento");
             }
-
-            // Obtener la lista de eventos actualizada del servidor después de cancelar la inscripción
             const updatedEvents = await fetchEvents();
             setEvents(updatedEvents);
 
