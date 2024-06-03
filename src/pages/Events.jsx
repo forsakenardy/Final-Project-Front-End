@@ -2,14 +2,20 @@ import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../auth.context";
 import "../styles/events.css";
 
+const API_URL = import.meta.env.VITE_API_URL
+
 function Events({ events }) {
     const { isLoggedIn, user } = useContext(AuthContext);
     const userId = user ? user._id : null;
+    const userName = user ? user.name : null; 
 
     const [signedUpEventIds, setSignedUpEventIds] = useState(() => {
         const savedIds = localStorage.getItem(`signedUpEventIds_${userId}`);
         return savedIds ? JSON.parse(savedIds) : [];
     });
+
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (userId) {
@@ -17,15 +23,54 @@ function Events({ events }) {
         }
     }, [signedUpEventIds, userId]);
 
-    const handleSignUpClick = (eventId) => {
+    const handleSignUpClick = async (eventId) => {
         if (!signedUpEventIds.includes(eventId)) {
-            setSignedUpEventIds([...signedUpEventIds, eventId]);
+            setLoading(true);
+            setError(null);
+            try {
+                const response = await fetch(`${API_URL}/events/signup`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ eventId, userId, userName })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Error al apuntarse al evento");
+                }
+
+                setSignedUpEventIds([...signedUpEventIds, eventId]);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
         }
     };
 
-    const handleCancelSignUpClick = (eventId) => {
+    const handleCancelSignUpClick = async (eventId) => {
         const updatedEventIds = signedUpEventIds.filter(id => id !== eventId);
         setSignedUpEventIds(updatedEventIds);
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await fetch(`${API_URL}/events/cancel`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ eventId, userId })
+            });
+
+            if (!response.ok) {
+                throw new Error("Error al cancelar la inscripción del evento");
+            }
+        } catch (error) {
+            setError(error.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     if (!userId) {
@@ -34,6 +79,8 @@ function Events({ events }) {
 
     return (
         <div className="events">
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
             {events.map((event) => (
                 <div className="event-card" key={event._id}>
                     <div>

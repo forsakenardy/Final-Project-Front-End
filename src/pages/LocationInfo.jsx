@@ -6,17 +6,9 @@ import "../styles/locations-info.css";
 function LocationInfo({ locations, getLocations }) {
     const { locationId } = useParams();
     const navigate = useNavigate();
-    const { isLoggedIn, user } = useContext(AuthContext);
+    const { isLoggedIn } = useContext(AuthContext); // Accede al contexto de autenticación
 
     const [locationCard, setLocationCard] = useState(null);
-    const [reservations, setReservations] = useState(() => {
-        if (isLoggedIn && user) {
-            const savedReservations = localStorage.getItem(`reservations_${user._id}`);
-            return savedReservations ? JSON.parse(savedReservations) : [];
-        }
-        return [];
-    });
-    const [isReserved, setIsReserved] = useState(false);
 
     useEffect(() => {
         getLocations();
@@ -27,36 +19,12 @@ function LocationInfo({ locations, getLocations }) {
             const currentIndex = locations.findIndex((location) => location._id === locationId);
             if (currentIndex !== -1) {
                 setLocationCard(locations[currentIndex]);
-                setIsReserved(reservations.some(reservation => reservation.locationId === locationId && reservation.userId === user._id));
             } else {
                 console.error("Location not found");
                 navigate("/404");
             }
         }
-    }, [locations, locationId, navigate, reservations, user]);
-
-    const handleReservationClick = () => {
-        const newReservation = {
-            locationId: locationCard._id,
-            userId: user._id,
-            locationName: locationCard.name,
-            // Agrega más detalles de la reserva según tus necesidades
-        };
-        setReservations([...reservations, newReservation]);
-        setIsReserved(true);
-    };
-
-    const handleCancelReservation = () => {
-        const updatedReservations = reservations.filter(reservation => !(reservation.locationId === locationId && reservation.userId === user._id));
-        setReservations(updatedReservations);
-        setIsReserved(false);
-    };
-
-    useEffect(() => {
-        if (isLoggedIn && user) {
-            localStorage.setItem(`reservations_${user._id}`, JSON.stringify(reservations));
-        }
-    }, [reservations, isLoggedIn, user]);
+    }, [locations, locationId, navigate]);
 
     if (!locationCard) {
         return <div>Loading...</div>;
@@ -71,14 +39,8 @@ function LocationInfo({ locations, getLocations }) {
             <h3 className="location-net">{`type of net: ${locationCard.net}`}</h3>
             <h3 className="location-barServise">{locationCard.barService ? "We have bar service" : "We don't have bar service"}</h3>
             <p className="location-description">{locationCard.description}</p>
-            {isLoggedIn && !isReserved && (
-                <button className="reservar" onClick={handleReservationClick}>Reserve</button>
-            )}
-            {isReserved && (
-                <div>
-                    <h1>Reserved by {user.name}</h1>
-                    <button className="cancel-reservation" onClick={handleCancelReservation}>Cancel Reservation</button>
-                </div>
+            {isLoggedIn && (
+                <button className="reservar">Reserve</button>
             )}
         </div>
     );
