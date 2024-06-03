@@ -6,7 +6,7 @@ import "../styles/locations-info.css";
 function LocationInfo({ locations, getLocations }) {
     const { locationId } = useParams();
     const navigate = useNavigate();
-    const { isLoggedIn } = useContext(AuthContext); // Accede al contexto de autenticación
+    const { isLoggedIn } = useContext(AuthContext); 
 
     const [locationCard, setLocationCard] = useState(null);
 

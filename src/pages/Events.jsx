@@ -2,29 +2,18 @@ import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../auth.context";
 import "../styles/events.css";
 
-const API_URL = import.meta.env.VITE_API_URL
+const API_URL = import.meta.env.VITE_API_URL;
 
-function Events({ events }) {
+function Events({ events, setEvents }) {
     const { isLoggedIn, user } = useContext(AuthContext);
     const userId = user ? user._id : null;
-    const userName = user ? user.name : null; 
-
-    const [signedUpEventIds, setSignedUpEventIds] = useState(() => {
-        const savedIds = localStorage.getItem(`signedUpEventIds_${userId}`);
-        return savedIds ? JSON.parse(savedIds) : [];
-    });
+    const userName = user ? user.name : null;
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        if (userId) {
-            localStorage.setItem(`signedUpEventIds_${userId}`, JSON.stringify(signedUpEventIds));
-        }
-    }, [signedUpEventIds, userId]);
-
     const handleSignUpClick = async (eventId) => {
-        if (!signedUpEventIds.includes(eventId)) {
+        if (!events.find(event => event._id === eventId).participants.some(participant => participant.userId === userId)) {
             setLoading(true);
             setError(null);
             try {
@@ -40,7 +29,10 @@ function Events({ events }) {
                     throw new Error("Error al apuntarse al evento");
                 }
 
-                setSignedUpEventIds([...signedUpEventIds, eventId]);
+                // Obtener la lista de eventos actualizada del servidor después de la inscripción
+                const updatedEvents = await fetchEvents();
+                setEvents(updatedEvents);
+
             } catch (error) {
                 setError(error.message);
             } finally {
@@ -50,8 +42,6 @@ function Events({ events }) {
     };
 
     const handleCancelSignUpClick = async (eventId) => {
-        const updatedEventIds = signedUpEventIds.filter(id => id !== eventId);
-        setSignedUpEventIds(updatedEventIds);
         setLoading(true);
         setError(null);
         try {
@@ -66,6 +56,11 @@ function Events({ events }) {
             if (!response.ok) {
                 throw new Error("Error al cancelar la inscripción del evento");
             }
+
+            // Obtener la lista de eventos actualizada del servidor después de cancelar la inscripción
+            const updatedEvents = await fetchEvents();
+            setEvents(updatedEvents);
+
         } catch (error) {
             setError(error.message);
         } finally {
@@ -73,9 +68,14 @@ function Events({ events }) {
         }
     };
 
-    if (!userId) {
-        return <div>Loading...</div>;
-    }
+    const fetchEvents = async () => {
+        const response = await fetch(`${API_URL}/events`);
+        if (!response.ok) {
+            throw new Error("Error al obtener los eventos");
+        }
+        const data = await response.json();
+        return data;
+    };
 
     return (
         <div className="events">
@@ -91,16 +91,20 @@ function Events({ events }) {
                         <p>{event.description}</p>
                         <p>Location: {event.location}</p>
                         <p>ELO Range: {event.elo_range.min} - {event.elo_range.max}</p>
+                        <p>Participants</p>
+                        <ul>
+                            {event.participants.map((participant, index) => (
+                                <li key={index}>{participant.userName}</li>
+                            ))}
+                        </ul>
                         {isLoggedIn && (
-                            !signedUpEventIds.includes(event._id) ? (
-                                <div>
-                                    <button onClick={() => handleSignUpClick(event._id)}>Join</button>
-                                </div>
+                            !event.participants.some(participant => participant.userId === userId) ? (
+                                <button onClick={() => handleSignUpClick(event._id)}>Join</button>
                             ) : (
-                                <div>
+                                <>
                                     <h1>You have signed up</h1>
                                     <button onClick={() => handleCancelSignUpClick(event._id)}>Cancel</button>
-                                </div>
+                                </>
                             )
                         )}
                     </div>
@@ -108,6 +112,7 @@ function Events({ events }) {
             ))}
         </div>
     );
+
 }
 
 export default Events;
