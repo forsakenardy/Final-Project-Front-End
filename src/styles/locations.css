@@ -15,14 +15,17 @@ padding-top: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(194, 186, 80);
+    background-color: rgb(19, 24, 170);
     border-radius: 10px;
     text-align: center;
+    box-shadow: 5px 5px 5px 5px;
 }
 
 .location-image {
     margin-top: 2vh;
     max-height: 20vh;
     width: 60vw;
+    height: 20vh;
     border-radius: 10px;
+    border: 2px solid black;
 }
