@@ -10,7 +10,7 @@ body {
 }
 a {
     text-decoration: none;
-    color: white;
+    color: #FFA53C;
 }
 .homepage {
     width: 90vw;
@@ -26,9 +26,19 @@ a {
     width: 90vw;
     border-bottom: 1px solid white;
 }
-.homepage h5 {
+body p {
+    font-size: 14px;
+}
+body h3 {
+    font-size: 20px;
+}
+body h1 {
+    font-size: 46px;
+}
+body h5 {
     color: #FFA53C;
     text-decoration: underline;
+    font-size: 16px;
 }
 .end-info{
     width: 90vw;

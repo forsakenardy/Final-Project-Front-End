@@ -1,13 +1,9 @@
-.locationinfo-image {
-    width: 100vw;
+.location-info {
+    padding-top: 3vh;
+    width: 90vw;
+    padding-left: 5vw;
 }
-.location-name1 {
-    line-height: 10%;
-    margin-left: 5vw;
-    padding-top: 1vh;
-    padding-bottom: 5vh ;
-}
-
-.location-info h3 {
-    margin-left: 5vw;
+.locationinfo-image{
+    width: 90vw;
+    border-radius: 2vw;
 }
