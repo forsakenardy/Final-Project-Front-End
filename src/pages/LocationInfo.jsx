@@ -35,10 +35,10 @@ function LocationInfo({ locations, getLocations }) {
     const handleReserveClick = async (horarioIndex) => {
         try {
             const updatedLocation = { ...locationCard };
-            // Solo actualizar si el horario no está ya reservado
+
             if (!updatedLocation.horarios[horarioIndex].reserved) {
                 updatedLocation.horarios[horarioIndex].reserved = true;
-                updatedLocation.horarios[horarioIndex].reservedby = user.name; // Añadir el nombre del usuario que reserva
+                updatedLocation.horarios[horarioIndex].reservedby = user.name;
 
                 const response = await axios.put(`${API_URL}/locations/${locationId}`, updatedLocation);
                 if (response.status === 200) {

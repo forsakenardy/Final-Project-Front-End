@@ -1,20 +1,16 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Navigate, useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
 import axios from "axios"
-
-
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-
-function Matches({ match, locations, getMatch, getLocations}) {
+function Matches({ locations, getMatch }) {
     const [location, setLocation] = useState("665854f95f1cf9b18bc43d45");
     const [day, setDay] = useState("");
     const [time, setTime] = useState("09:00");
     const [comment, setComment] = useState("");
     const [pairs, setPairs] = useState(false);
-    
+
     const today = new Date()
 
     const handleLocation = (e) => setLocation(e.target.value);
@@ -26,8 +22,8 @@ function Matches({ match, locations, getMatch, getLocations}) {
 
     const handleMatchSubmit = (e) => {
 
-       e.preventDefault();
-        const requestBody = { location, day, time, comment, pairs }; 
+        e.preventDefault();
+        const requestBody = { location, day, time, comment, pairs };
         console.log(requestBody)
         axios.post(`${API_URL}/matches/`, requestBody)
             .then((data) => {
@@ -41,7 +37,7 @@ function Matches({ match, locations, getMatch, getLocations}) {
             })
     }
 
-const requestedForm = {location, day, time, comment}
+    const requestedForm = { location, day, time, comment }
     return (
         <div>
             <form onSubmit={requestedForm ? handleMatchSubmit : "You need to fill the location, day, time and comment"}>
@@ -82,7 +78,7 @@ const requestedForm = {location, day, time, comment}
                     <option value={true}>Yes</option>
                 </select>
                 <button type="submit">Matching!</button>
-               
+
             </form>
         </div>
     )

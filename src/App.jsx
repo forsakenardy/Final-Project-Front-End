@@ -29,28 +29,28 @@ function App() {
   const [profile, setProfile] = useState([])
 
 
-const getMatch = async()=>{
-  try{
-    const storedToken = localStorage.getItem("authToken");
-    if(!storedToken){
-      throw new Error("No auth token found");
-    }
-    const response = await axios.get(`${API_URL}/matches/`, {headers: {Authorization: `Bearer ${storedToken}`}})
-    const matches = response.data;
-    console.log("matches taken", matches);
-    setMatches(matches)
-  }catch(error){
-    console.log("There is an error creating a new match", error)
-  }
-}
-  const getLocations = async () => {
+  const getMatch = async () => {
     try {
-     /* const storedToken = localStorage.getItem("authToken");
+      const storedToken = localStorage.getItem("authToken");
       if (!storedToken) {
         throw new Error("No auth token found");
-      }*/
+      }
+      const response = await axios.get(`${API_URL}/matches/`, { headers: { Authorization: `Bearer ${storedToken}` } })
+      const matches = response.data;
+      console.log("matches taken", matches);
+      setMatches(matches)
+    } catch (error) {
+      console.log("There is an error creating a new match", error)
+    }
+  }
+  const getLocations = async () => {
+    try {
+       const storedToken = localStorage.getItem("authToken");
+       if (!storedToken) {
+         throw new Error("No auth token found");
+       }
 
-      const response = await axios.get(`${API_URL}/locations/`) //,{ headers: { Authorization: `Bearer ${storedToken}` } });
+      const response = await axios.get(`${API_URL}/locations/`,{ headers: { Authorization: `Bearer ${storedToken}` } });
       const locations = response.data;
 
       console.log("data is good", locations);
@@ -64,12 +64,12 @@ const getMatch = async()=>{
 
   const getEvents = async () => {
     try {
-     /* const storedToken = localStorage.getItem("authToken");
-      if (!storedToken) {
-        throw new Error("No auth token found");
-      }*/
+       const storedToken = localStorage.getItem("authToken");
+       if (!storedToken) {
+         throw new Error("No auth token found");
+       }
 
-      const response = await axios.get(`${API_URL}/events/`) //,{ headers: { Authorization: `Bearer ${storedToken}` } });
+      const response = await axios.get(`${API_URL}/events/`,{ headers: { Authorization: `Bearer ${storedToken}` } });
       const events = response.data;
 
       console.log("data is good", events);
@@ -87,7 +87,7 @@ const getMatch = async()=>{
         throw new Error("No auth token found");
       }
 
-      const response = await axios.get(`${API_URL}/users/`,{ headers: { Authorization: `Bearer ${storedToken}` } });
+      const response = await axios.get(`${API_URL}/users/`, { headers: { Authorization: `Bearer ${storedToken}` } });
 
       const profile = response.data;
 
@@ -106,28 +106,23 @@ const getMatch = async()=>{
     getMatch()
   }, [])
 
-
   return (
     <>
-      <Navbar profile={profile}/>
+      <Navbar profile={profile} />
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/locations' element={<Locations locations={locations} />} />
-        <Route path='/users' element={<IsPrivate><Users profile={profile} matches={matches}/> </IsPrivate>} />
+        <Route path='/users' element={<IsPrivate><Users profile={profile} matches={matches} /> </IsPrivate>} />
         <Route path='/locations/:locationId' element={<LocationInfo profile={profile} locations={locations} getLocations={getLocations} />} />
         <Route path='/events' element={<Events events={events} setEvents={setEvents} />} />
-        <Route path='/profile/:profileId' element={<Profile  profile={profile} getProfile={getProfile}/>} />
+        <Route path='/profile/:profileId' element={<Profile profile={profile} getProfile={getProfile} />} />
         <Route path='/signup' element={<IsAnon><SignupPage /></IsAnon>} />
-        <Route path='/loginForm' element={<IsAnon><LoginForm /> </IsAnon> } />
-        <Route path='/users/challengeform' element={<IsPrivate> <ChallengeForm matches={matches} locations={locations} getMatch={getMatch}  /> </IsPrivate>} />
-        <Route path='/creatematches' element={<IsPrivate> <Matches matches={matches} locations={locations} getMatch={getMatch}/> </IsPrivate>} />
-
+        <Route path='/loginForm' element={<IsAnon><LoginForm /> </IsAnon>} />
+        <Route path='/users/challengeform' element={<IsPrivate> <ChallengeForm matches={matches} locations={locations} getMatch={getMatch} /> </IsPrivate>} />
+        <Route path='/creatematches' element={<IsPrivate> <Matches matches={matches} locations={locations} getMatch={getMatch} /> </IsPrivate>} />
         <Route path='/aboutUs' element={<AboutUs />} />
       </Routes>
       <Footer />
-
-
-
     </>
   );
 }
