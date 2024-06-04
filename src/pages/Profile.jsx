@@ -81,7 +81,7 @@ function Profile({ profile, getProfile }) {
                         <div className="edit-name">
                             <label >Set New Name:</label>
                             <input
-                             placeholder="Full Name"
+                                placeholder="Full Name"
                                 type="text"
                                 name="name"
                                 value={editedProfile.name}
@@ -91,7 +91,7 @@ function Profile({ profile, getProfile }) {
                         <div className="edit=phone">
                             <label >New Phone Number:</label>
                             <input
-                             placeholder="Only digits"
+                                placeholder="Only digits"
                                 type="text"
                                 name="phoneNumber"
                                 value={editedProfile.phoneNumber}
@@ -99,18 +99,22 @@ function Profile({ profile, getProfile }) {
                             />
                         </div>
                         <div className="edit-location">
-                            <label > where are u now?:</label>
-                            <input
-                                type="text"
+                            <label > Where are u now?:</label>
+                            <select type="text"
                                 name="location"
                                 value={editedProfile.location}
-                                onChange={handleChange}
-                            />
+                                onChange={handleChange} >
+                                <option value="Bilbao">Bilbao</option>
+                                <option value="Barcelona">Barcelona</option>
+                                <option value="Madrid">Madrid</option>
+                                <option value="La Habana">La Habana</option>
+                            </select>
+                            
                         </div>
                         <div className="edit-image">
                             <label >New image url:</label>
                             <input
-                            placeholder="Incert a valid url"
+                                placeholder="Incert a valid url"
                                 type="text"
                                 name="image"
                                 value={editedProfile.image}
@@ -120,7 +124,7 @@ function Profile({ profile, getProfile }) {
                         <div className="edit-description">
                             <label >Write something about you:</label>
                             <input
-                             placeholder="I am the best player"
+                                placeholder="I am the best player"
                                 type="text"
                                 name="description"
                                 value={editedProfile.description}
