@@ -35,10 +35,10 @@ function LocationInfo({ locations, getLocations }) {
     const handleReserveClick = async (horarioIndex) => {
         try {
             const updatedLocation = { ...locationCard };
-            // Solo actualizar si el horario no está ya reservado
+
             if (!updatedLocation.horarios[horarioIndex].reserved) {
                 updatedLocation.horarios[horarioIndex].reserved = true;
-                updatedLocation.horarios[horarioIndex].reservedby = user.name; // Añadir el nombre del usuario que reserva
+                updatedLocation.horarios[horarioIndex].reservedby = user.name;
 
                 const response = await axios.put(`${API_URL}/locations/${locationId}`, updatedLocation);
                 if (response.status === 200) {
@@ -85,23 +85,24 @@ function LocationInfo({ locations, getLocations }) {
         <div key={locationCard._id} className="location-info">
             <img className="locationinfo-image" src={locationCard.image} alt="location-image" />
             <h1 className="location-name1">{locationCard.name}</h1>
+            <p className="location-description">{locationCard.description}</p>
             <h3 className="location-place">{locationCard.place}</h3>
             <h3 className="location-rackets">{locationCard.rackets ? "rackets available" : "rackets not available"}</h3>
             <h3 className="location-net">{`type of net: ${locationCard.net}`}</h3>
             <h3 className="location-barServise">{locationCard.barService ? "We have bar service" : "We don't have bar service"}</h3>
-            <p className="location-description">{locationCard.description}</p>
+
             <ul>
                 {locationCard.horarios.map((horario, index) => (
                     <li key={index}>
-                        <h3>From: {horario.horaInicio} to: {horario.horaFin}</h3>
-                        {isLoggedIn && !horario.reserved && (
-                            <button className="reservar" onClick={() => handleReserveClick(index)}>Reserve</button>
-                        )}
-                        {isLoggedIn && reservedIndices.includes(index) && horario.reservedby === user.name && (
-                            <>
-                                <button className="cancelar" onClick={() => handleCancelReservation(index)}>Cancelar reserva</button>
-                            </>
-                        )}
+                        <div className="horario">
+                            <h5>From: {horario.horaInicio} to: {horario.horaFin}</h5>
+                            {isLoggedIn && !horario.reserved && (
+                                <button className="reservar" onClick={() => handleReserveClick(index)}>Reserve</button>
+                            )}
+                            {isLoggedIn && reservedIndices.includes(index) && horario.reservedby === user.name && (
+                                    <button className="cancelar" onClick={() => handleCancelReservation(index)}>Cancelar reserva</button>
+                            )}
+                        </div>
                         {isLoggedIn && horario.reserved && (
                             <h2>Reserved by: {horario.reservedby}</h2>
                         )}

@@ -1,11 +1,10 @@
 const API_URL = import.meta.env.VITE_API_URL;
 import axios from "axios";
-import { useContext, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth.context";
-import { Link } from "react-router-dom";
 
-function ChallengeForm({ matches, locations, getMatch }) {
+function ChallengeForm({ matches, getMatch }) {
 
     function checkId(participantsArr, user) {
         for (let i in participantsArr) {
@@ -16,14 +15,8 @@ function ChallengeForm({ matches, locations, getMatch }) {
         return null
     }
 
-
-
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
-    /* const handleBook = (e) => {
-         e.preventDefault();
- 
-     }*/
 
     const handleJoin = (matchId) => {
         axios.put(
@@ -37,14 +30,15 @@ function ChallengeForm({ matches, locations, getMatch }) {
             .catch((error) => { console.log(error) })
     }
 
-    const handleUnbook = (matchId)=>{
-        axios.put(`${API_URL}/matches/cancel/${matchId}`,{userId: user._id})
-        .then(()=>{
-            console.log("user removed from the match")
-            getMatch()
-        })
-        .catch((error)=> {console.log(error)})
+    const handleUnbook = (matchId) => {
+        axios.put(`${API_URL}/matches/cancel/${matchId}`, { userId: user._id })
+            .then(() => {
+                console.log("user removed from the match")
+                getMatch()
+            })
+            .catch((error) => { console.log(error) })
     }
+
 
     const handleCancelMatch = (matchId) =>{
         axios.delete(`${API_URL}/matches/${matchId}/${user._id}`)
@@ -52,9 +46,8 @@ function ChallengeForm({ matches, locations, getMatch }) {
             console.log("match deleted")
             getMatch()})
         .catch(()=> console.log("error deleting the match"))
-    }
-   
 
+    }
 
     return (
         <div>
@@ -68,10 +61,12 @@ function ChallengeForm({ matches, locations, getMatch }) {
                         <p>{match.pairs}</p>
                         <p>{match.createdBy?.name ? match.createdBy.name : "No name, no party"}</p>
                         <p>{match.participants.map((participant) => participant.name)}</p>
-                        {/*<p>{match[participants]}</p>*/}
+
                         {!checkId(match.participants, user) ? <button onClick={() => handleJoin(match._id)}>Join!</button> : "You are booked"}
+
                         {checkId(match.participants, user) && <button onClick={()=> handleUnbook(match._id)}>Unbook</button> }
                          <button onClick={() => handleCancelMatch(match._id)}>Cancel</button> {/*que solo tenga el botón quien haya creado el partido*/}
+
 
                     </div>
                 )

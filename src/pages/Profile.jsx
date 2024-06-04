@@ -4,8 +4,8 @@ import axios from "axios";
 import "../styles/profile.css"
 import { AuthContext } from "../auth.context";
 import { useContext } from "react";
-const API_URL = import.meta.env.VITE_API_URL
 
+const API_URL = import.meta.env.VITE_API_URL
 
 function Profile({ profile, getProfile }) {
     const { profileId } = useParams();
@@ -15,8 +15,7 @@ function Profile({ profile, getProfile }) {
     const [editedProfile, setEditedProfile] = useState({});
     const [originalProfile, setOriginalProfile] = useState({});
 
-    const { user, setUser} = useContext(AuthContext);
-
+    const { user, setUser } = useContext(AuthContext);
 
     useEffect(() => {
         getProfile();
@@ -109,7 +108,7 @@ function Profile({ profile, getProfile }) {
                                 <option value="Madrid">Madrid</option>
                                 <option value="La Habana">La Habana</option>
                             </select>
-                            
+
                         </div>
                         <div className="edit-image">
                             <label >New image url:</label>
@@ -150,12 +149,6 @@ function Profile({ profile, getProfile }) {
                             <h1>Description: </h1>
                             <h2>{profileCard.description}</h2>
                         </div>
-
-
-
-
-
-
                     </div>
                 )}
             </div>
