@@ -1,6 +1,7 @@
 function HomePage() {
     return (
         <div className="homepage">
+            <img className="ball1" src="src\assets\images\yellow-ball.png" alt="" />
             <div className="first-homepage">
                 <h3 className="homepage-intro">Welcome to</h3>
                 <h1>De Ping a Pong</h1>

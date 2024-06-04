@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 
 function IsAnon({children}){
     const {isLoggedIn, isLoading} = useContext(AuthContext);
-    if(isLoading) return <p>Loading...</p>
+    if(isLoading) return <img className="ball2" src="src\assets\images\white-ball.png" alt="" />
 
     if(isLoggedIn){
         return <Navigate to="/"/>

@@ -75,7 +75,7 @@ function Events({ events, setEvents }) {
 
     return (
         <div className="events">
-            {loading && <p>Loading...</p>}
+            {loading && <img className="ball2" src="src\assets\images\white-ball.png" alt="" />}
             {error && <p>{error}</p>}
             {events.map((event) => (
                 <div className="event-card" key={event._id}>
