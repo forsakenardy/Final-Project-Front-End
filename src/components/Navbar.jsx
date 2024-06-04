@@ -18,7 +18,7 @@ function Navbar() {
     useEffect(() => {
         document.addEventListener('mousedown', closeMenu);
 
-  
+ 
         return () => {
             document.removeEventListener('mousedown', closeMenu);
         };
@@ -27,6 +27,8 @@ function Navbar() {
     const toggleClass = () => {
         setIsPressed((prevState) => !prevState);
     };
+    const defaultImage = "https://c0.klipartz.com/pngpicture/81/570/gratis-png-perfil-logo-iconos-de-computadora-usuario-usuario.png"
+
 
     return (
         <>
@@ -40,7 +42,12 @@ function Navbar() {
                     {isLoggedIn && <NavLink to="/creatematches"><h1>Matches</h1></NavLink>}
                 </div>
                 {isLoggedIn &&
-                    <img onClick={toggleClass} className="perfil-image" src={user.image} alt="perfil image" />
+                    <img 
+                    onClick={toggleClass} 
+                    className="perfil-image" 
+                    src={!user.image? defaultImage: user.image} 
+                    alt="perfil image" 
+                    />
                 }
                 {isLoggedIn &&
                     <div className={isPressed ? 'menu-links' : 'hidden'}>
