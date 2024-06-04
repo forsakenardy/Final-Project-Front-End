@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../styles/profile.css"
-
+import { AuthContext } from "../auth.context";
+import { useContext } from "react";
 const API_URL = import.meta.env.VITE_API_URL
 
 
@@ -13,6 +14,9 @@ function Profile({ profile, getProfile }) {
     const [isEditing, setIsEditing] = useState(false);
     const [editedProfile, setEditedProfile] = useState({});
     const [originalProfile, setOriginalProfile] = useState({});
+
+    const { user, setUser} = useContext(AuthContext);
+
 
     useEffect(() => {
         getProfile();
@@ -43,9 +47,10 @@ function Profile({ profile, getProfile }) {
             if (!response.data) {
                 throw new Error('Failed to update profile');
             }
-
+            console.log("this is user", profile);
             getProfile();
             setIsEditing(false);
+            setUser(response.data.user)
         } catch (error) {
             console.error("Failed to update profile:", error);
         }
