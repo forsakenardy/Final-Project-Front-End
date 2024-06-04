@@ -13,7 +13,9 @@ function Matches({ match, locations, getMatch, getLocations}) {
     const [day, setDay] = useState("");
     const [time, setTime] = useState("09:00");
     const [comment, setComment] = useState("");
-    const [pairs, setPairs] = useState(false)
+    const [pairs, setPairs] = useState(false);
+    
+    const today = new Date()
 
     const handleLocation = (e) => setLocation(e.target.value);
     const handleDay = (e) => setDay(e.target.value);
@@ -39,11 +41,10 @@ function Matches({ match, locations, getMatch, getLocations}) {
             })
     }
 
-
-
+const requestedForm = {location, day, time, comment}
     return (
         <div>
-            <form onSubmit={handleMatchSubmit}>
+            <form onSubmit={requestedForm ? handleMatchSubmit : "You need to fill the location, day, time and comment"}>
                 <label>Location:</label>
                 <select type="text" name="location" onChange={handleLocation}>
                     {locations.map((location) => {
@@ -57,7 +58,7 @@ function Matches({ match, locations, getMatch, getLocations}) {
                     })}
                 </select>
                 <label>Day:</label>
-                <input type="date" value={day} onChange={handleDay} />
+                <input type="date" value={day} min={today.toISOString().slice(0, 10)} onChange={handleDay} />
                 <label>Time:</label>
                 <select name="time" value={time} onChange={handleTime}>
                     <option>09:00</option>
@@ -81,6 +82,7 @@ function Matches({ match, locations, getMatch, getLocations}) {
                     <option value={true}>Yes</option>
                 </select>
                 <button type="submit">Matching!</button>
+               
             </form>
         </div>
     )
