@@ -9,7 +9,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 function LocationInfo({ locations, getLocations }) {
     const { locationId } = useParams();
     const navigate = useNavigate();
-    const { isLoggedIn } = useContext(AuthContext);
+    const { isLoggedIn, user } = useContext(AuthContext);
 
     const [locationCard, setLocationCard] = useState(null);
     const [reservedIndices, setReservedIndices] = useState([]);
@@ -23,7 +23,6 @@ function LocationInfo({ locations, getLocations }) {
             const currentIndex = locations.findIndex((location) => location._id === locationId);
             if (currentIndex !== -1) {
                 setLocationCard(locations[currentIndex]);
-                // Obtener datos de reserva del local storage si están disponibles
                 const storedReservedIndices = JSON.parse(localStorage.getItem("reservedIndices")) || [];
                 setReservedIndices(storedReservedIndices);
             } else {
@@ -36,36 +35,39 @@ function LocationInfo({ locations, getLocations }) {
     const handleReserveClick = async (horarioIndex) => {
         try {
             const updatedLocation = { ...locationCard };
-            updatedLocation.horarios[horarioIndex].reserved = true;
-            const response = await axios.put(`${API_URL}/locations/${locationId}`, updatedLocation);
-            if (response.status === 200) {
-                setLocationCard(updatedLocation);
-                const updatedReservedIndices = [...reservedIndices, horarioIndex];
-                setReservedIndices(updatedReservedIndices);
-                // Guardar datos de reserva en el local storage
-                localStorage.setItem("reservedIndices", JSON.stringify(updatedReservedIndices));
-                // Actualizar la lista de ubicaciones después de la reserva exitosa
-                getLocations();
-            } else {
-                console.error("Failed to update reservation status");
+            // Solo actualizar si el horario no está ya reservado
+            if (!updatedLocation.horarios[horarioIndex].reserved) {
+                updatedLocation.horarios[horarioIndex].reserved = true;
+                updatedLocation.horarios[horarioIndex].reservedby = user.name; // Añadir el nombre del usuario que reserva
+
+                const response = await axios.put(`${API_URL}/locations/${locationId}`, updatedLocation);
+                if (response.status === 200) {
+                    setLocationCard(updatedLocation);
+                    const updatedReservedIndices = [...reservedIndices, horarioIndex];
+                    setReservedIndices(updatedReservedIndices);
+                    localStorage.setItem("reservedIndices", JSON.stringify(updatedReservedIndices));
+                    getLocations();
+                } else {
+                    console.error("Failed to update reservation status");
+                }
             }
         } catch (error) {
             console.error("Error:", error);
         }
     };
 
+
     const handleCancelReservation = async (horarioIndex) => {
         try {
             const updatedLocation = { ...locationCard };
             updatedLocation.horarios[horarioIndex].reserved = false;
+            updatedLocation.horarios[horarioIndex].reservedby = "";
             const response = await axios.put(`${API_URL}/locations/${locationId}`, updatedLocation);
             if (response.status === 200) {
                 setLocationCard(updatedLocation);
                 const updatedReservedIndices = reservedIndices.filter(index => index !== horarioIndex);
                 setReservedIndices(updatedReservedIndices);
-                // Guardar datos de reserva actualizados en el local storage
                 localStorage.setItem("reservedIndices", JSON.stringify(updatedReservedIndices));
-                // Actualizar la lista de ubicaciones después de la cancelación exitosa
                 getLocations();
             } else {
                 console.error("Failed to update reservation status");
@@ -95,8 +97,13 @@ function LocationInfo({ locations, getLocations }) {
                         {isLoggedIn && !horario.reserved && (
                             <button className="reservar" onClick={() => handleReserveClick(index)}>Reserve</button>
                         )}
-                        {isLoggedIn && reservedIndices.includes(index) && (
-                            <button className="cancelar" onClick={() => handleCancelReservation(index)}>Cancelar reserva</button>
+                        {isLoggedIn && reservedIndices.includes(index) && horario.reservedby === user.name && (
+                            <>
+                                <button className="cancelar" onClick={() => handleCancelReservation(index)}>Cancelar reserva</button>
+                            </>
+                        )}
+                        {isLoggedIn && horario.reserved && (
+                            <h2>Reserved by: {horario.reservedby}</h2>
                         )}
                     </li>
                 ))}

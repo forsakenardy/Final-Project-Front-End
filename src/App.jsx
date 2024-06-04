@@ -114,7 +114,7 @@ const getMatch = async()=>{
         <Route path='/' element={<HomePage />} />
         <Route path='/locations' element={<Locations locations={locations} />} />
         <Route path='/users' element={<IsPrivate><Users profile={profile} matches={matches}/> </IsPrivate>} />
-        <Route path='/locations/:locationId' element={<LocationInfo locations={locations} getLocations={getLocations} />} />
+        <Route path='/locations/:locationId' element={<LocationInfo profile={profile} locations={locations} getLocations={getLocations} />} />
         <Route path='/events' element={<Events events={events} setEvents={setEvents} />} />
         <Route path='/profile/:profileId' element={<Profile  profile={profile} getProfile={getProfile}/>} />
         <Route path='/signup' element={<IsAnon><SignupPage /></IsAnon>} />
