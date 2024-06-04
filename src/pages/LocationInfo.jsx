@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth.context";
+import axios from "axios";
 import "../styles/locations-info.css";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 function LocationInfo({ locations, getLocations }) {
     const { locationId } = useParams();
@@ -9,6 +12,7 @@ function LocationInfo({ locations, getLocations }) {
     const { isLoggedIn } = useContext(AuthContext);
 
     const [locationCard, setLocationCard] = useState(null);
+    const [reservedIndices, setReservedIndices] = useState([]);
 
     useEffect(() => {
         getLocations();
@@ -19,12 +23,57 @@ function LocationInfo({ locations, getLocations }) {
             const currentIndex = locations.findIndex((location) => location._id === locationId);
             if (currentIndex !== -1) {
                 setLocationCard(locations[currentIndex]);
+                // Obtener datos de reserva del local storage si están disponibles
+                const storedReservedIndices = JSON.parse(localStorage.getItem("reservedIndices")) || [];
+                setReservedIndices(storedReservedIndices);
             } else {
                 console.error("Location not found");
                 navigate("/404");
             }
         }
     }, [locations, locationId, navigate]);
+
+    const handleReserveClick = async (horarioIndex) => {
+        try {
+            const updatedLocation = { ...locationCard };
+            updatedLocation.horarios[horarioIndex].reserved = true;
+            const response = await axios.put(`${API_URL}/locations/${locationId}`, updatedLocation);
+            if (response.status === 200) {
+                setLocationCard(updatedLocation);
+                const updatedReservedIndices = [...reservedIndices, horarioIndex];
+                setReservedIndices(updatedReservedIndices);
+                // Guardar datos de reserva en el local storage
+                localStorage.setItem("reservedIndices", JSON.stringify(updatedReservedIndices));
+                // Actualizar la lista de ubicaciones después de la reserva exitosa
+                getLocations();
+            } else {
+                console.error("Failed to update reservation status");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    const handleCancelReservation = async (horarioIndex) => {
+        try {
+            const updatedLocation = { ...locationCard };
+            updatedLocation.horarios[horarioIndex].reserved = false;
+            const response = await axios.put(`${API_URL}/locations/${locationId}`, updatedLocation);
+            if (response.status === 200) {
+                setLocationCard(updatedLocation);
+                const updatedReservedIndices = reservedIndices.filter(index => index !== horarioIndex);
+                setReservedIndices(updatedReservedIndices);
+                // Guardar datos de reserva actualizados en el local storage
+                localStorage.setItem("reservedIndices", JSON.stringify(updatedReservedIndices));
+                // Actualizar la lista de ubicaciones después de la cancelación exitosa
+                getLocations();
+            } else {
+                console.error("Failed to update reservation status");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
 
     if (!locationCard) {
         return <div>Loading...</div>;
@@ -43,8 +92,11 @@ function LocationInfo({ locations, getLocations }) {
                 {locationCard.horarios.map((horario, index) => (
                     <li key={index}>
                         <h3>From: {horario.horaInicio} to: {horario.horaFin}</h3>
-                        {isLoggedIn && (
-                            <button className="reservar">Reserve</button>
+                        {isLoggedIn && !horario.reserved && (
+                            <button className="reservar" onClick={() => handleReserveClick(index)}>Reserve</button>
+                        )}
+                        {isLoggedIn && reservedIndices.includes(index) && (
+                            <button className="cancelar" onClick={() => handleCancelReservation(index)}>Cancelar reserva</button>
                         )}
                     </li>
                 ))}
