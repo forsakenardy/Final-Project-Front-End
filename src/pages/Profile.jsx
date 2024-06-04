@@ -69,7 +69,7 @@ function Profile({ profile, getProfile }) {
     };
 
     if (!profileCard) {
-        return <div><img className="ball2" src="src\assets\images\white-ball.png" alt="" /></div>;
+        return <div><img className="ball2" src="https://i.ibb.co/WKTHyR0/white-ball.png" alt="" /></div>;
     }
 
     return (
