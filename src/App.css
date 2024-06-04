@@ -54,6 +54,7 @@ body h5 {
     width: 12vw;
     animation-duration: 1.5s;
     animation: bounce 10s linear;
+    animation-delay: 2s;
 }
 @keyframes bounce {
     0% { transform: rotate(-10deg) translateY(-10vh) scale(1); }
