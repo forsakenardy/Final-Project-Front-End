@@ -3,6 +3,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth.context";
+import { Link } from "react-router-dom";
 
 function ChallengeForm({ matches, locations, getMatch }) {
     const navigate = useNavigate();
@@ -44,8 +45,9 @@ function ChallengeForm({ matches, locations, getMatch }) {
                         <p>{match.day} {match.time}</p>
                         <p>{match.comment}</p>
                         <p>{match.pairs}</p>
-                        <button onClick={() => handleJoin(match._id)}>Join!</button>
-                        <button onClick={() => handleCancelMatch(match._id)}>Cancel</button>
+                        {/*<p>{match[participants]}</p>*/}
+                        {(match.participants < 2) ? <button onClick={() => handleJoin(match._id)}>Join!</button> : "No more seats"}
+                        <button onClick={() => handleCancelMatch(match._id)}>Cancel</button> {/*que solo tenga el botón quien haya creado el partido*/}
                     </div>
                 )
             })}
