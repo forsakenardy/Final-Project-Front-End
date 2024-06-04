@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { Navigate, useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import axios from "axios"
+import { AuthContext } from "../auth.context"
+import { useContext } from "react"
 
 
 
@@ -9,25 +11,28 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 
 function Matches({ match, locations, getMatch, getLocations}) {
-    const [location, setLocation] = useState("665854f95f1cf9b18bc43d45");
+    const [location, setLocation] = useState("ObjetcId: 665854f95f1cf9b18bc43d45");
     const [day, setDay] = useState("");
     const [time, setTime] = useState("09:00");
     const [comment, setComment] = useState("");
     const [pairs, setPairs] = useState(false);
+    const [createdBy, setCreatedBy] = useState("")
     
-    const today = new Date()
-
+    const today = new Date();
+    const {user} = useContext(AuthContext);
+    
     const handleLocation = (e) => setLocation(e.target.value);
     const handleDay = (e) => setDay(e.target.value);
     const handleTime = (e) => setTime(e.target.value);
     const handleComment = (e) => setComment(e.target.value);
     const handlePairs = (e) => setPairs(e.target.value);
+    
     const navigate = useNavigate();
 
     const handleMatchSubmit = (e) => {
 
        e.preventDefault();
-        const requestBody = { location, day, time, comment, pairs }; 
+        const requestBody = { location, day, time, comment, pairs, createdBy: user._id}; 
         console.log(requestBody)
         axios.post(`${API_URL}/matches/`, requestBody)
             .then((data) => {

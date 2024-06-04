@@ -47,7 +47,7 @@ function ChallengeForm({ matches, locations, getMatch }) {
     }
 
     const handleCancelMatch = (matchId) =>{
-        axios.delete(`${API_URL}/matches/${matchId}`)
+        axios.delete(`${API_URL}/matches/${matchId}/${user._id}`)
         .then(()=> {
             console.log("match deleted")
             getMatch()})
@@ -66,11 +66,12 @@ function ChallengeForm({ matches, locations, getMatch }) {
                         <p>{match.day} {match.time}</p>
                         <p>{match.comment}</p>
                         <p>{match.pairs}</p>
+                        <p>{match.createdBy?.name ? match.createdBy.name : "No name, no party"}</p>
                         <p>{match.participants.map((participant) => participant.name)}</p>
                         {/*<p>{match[participants]}</p>*/}
                         {!checkId(match.participants, user) ? <button onClick={() => handleJoin(match._id)}>Join!</button> : "You are booked"}
                         {checkId(match.participants, user) && <button onClick={()=> handleUnbook(match._id)}>Unbook</button> }
-                        { } <button onClick={() => handleCancelMatch(match._id)}>Cancel</button> {/*que solo tenga el botón quien haya creado el partido*/}
+                         <button onClick={() => handleCancelMatch(match._id)}>Cancel</button> {/*que solo tenga el botón quien haya creado el partido*/}
 
                     </div>
                 )
