@@ -87,7 +87,7 @@ function Events({ events, setEvents }) {
                         <p>{event.description}</p>
                         <p>Location: {event.location}</p>
                         <p>ELO Range: {event.elo_range.min} - {event.elo_range.max}</p>
-                        <p>Participants</p>
+                        <p>Participants: </p>
                         <ul>
                             {event.participants.map((participant, index) => (
                                 <li key={index}>{participant.userName}</li>
