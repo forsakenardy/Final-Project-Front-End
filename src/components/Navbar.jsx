@@ -30,6 +30,7 @@ function Navbar() {
     const defaultImage = "https://i.ibb.co/yyVDCt2/user-removebg-preview.png"
 
 
+
     return (
         <>
             <div className="navbar">
@@ -42,17 +43,17 @@ function Navbar() {
                 </div>
                 {isLoggedIn &&
                     <img 
-                        onClick={toggleClass}
+                        onClick={(toggleClass)}
                         className="profile1-image"
                         src={!user.image ? defaultImage : user.image}
                         alt="perfil image"
                     />
                 }
                 {isLoggedIn &&
-                    <div className={isPressed ? 'menu-links' : 'hidden'}>
+                    <div className={isPressed ? 'menu-links': 'hidden'}>
                         <NavLink onClick={toggleClass} to={`/profile/${user._id}`}><h1>View Profile</h1></NavLink>
-                        <NavLink onClick={toggleClass} to="/creatematches"><h1>Matches</h1></NavLink>
-                        <NavLink onClick={toggleClass} to="/users/challengeform"><h1>Play's History</h1></NavLink>
+                        <NavLink onClick={toggleClass} to="/creatematches"><h1>Create a Match!</h1></NavLink>
+                        <NavLink onClick={toggleClass} to="/users/challengeform"><h1>Matches</h1></NavLink>
                         <Link to="/"><button onClick={() => {
                             logOutUser();
                             toggleClass();

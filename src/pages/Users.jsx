@@ -47,6 +47,7 @@ function Users({ profile, matches }) {
                 profile && profile.map((user) => {
                     return (
                         <div key={user._id} className="user-card">
+
                             <p>{user.name}</p>
                             <h5>{user.rank}</h5>
                             <p>{user.location}</p>

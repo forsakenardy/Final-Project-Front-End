@@ -4,7 +4,7 @@ import "../styles/footer.css"
 function Footer() {
     return (
         <div className="footer">
-            <p className="copiright">&copy; 2024 Developed by Arnaldo and Mikel</p>
+            <p className="copiright">&copy; 2024 Developed by Arnaldo Mera and Mikel Jiménez</p>
             <div className="footer-icons">
                 <div className="front-end">
                     <a target="blank" href="https://github.com/forsakenardy/Final-Project-Front-End"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
