@@ -45,7 +45,7 @@ function LoginForm(props) {
                 <button type="submit">Login</button>
             </form>
             {errorMessage && <p>{errorMessage}</p>}
-            <p>What are you doing without an account? Hurry up and <Link to="/signup">Sign Up</Link> </p>
+            <p>What are you doing without an account? Hurry and <Link to="/signup">Sign Up</Link> </p>
         </div>
     )
 }

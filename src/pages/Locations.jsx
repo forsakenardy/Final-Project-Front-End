@@ -13,10 +13,12 @@ function Locations({ locations }) {
                         <Link key={location._id} to={`/locations/${location._id}`} >
                             <div className="location-cards">
                                 <img className="location-image" src={location.image} alt="location image" />
-                                <h2 className="location-name">{location.name}</h2>
+                                <h3 className="location-name">{location.name}</h3>
                                 <div className="h6-locations">
-                                    <h6>{location.place}</h6>
-                                    <h6>{location.rackets ? "Rackets available" : "Rackets not available"}</h6>
+                                    <p>Location</p>
+                                    <h4>{location.place}</h4>
+                                    <p>Rakets</p>
+                                    <h4>{location.rackets ? "Rackets available" : "Rackets not available"}</h4>
                                 </div>
 
                             </div>

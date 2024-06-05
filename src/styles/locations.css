@@ -1,7 +1,8 @@
 .locations {
     display: flex;
     flex-wrap: wrap;
-    gap: 3vh;
+    align-items: start;
+    gap: 1.8vh;
     overflow-y: auto;
 width: 100vw;
 height: 70vh;
@@ -11,40 +12,46 @@ padding-left: 7vw;
 
 .location-cards {
     width: 40vw;
-    height: 25vh;
+    height: 27vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: #FFA53C;
     color: #004D40; 
     border-radius: 10px;
     text-align: center;
     border: 2px solid black;
-
+    box-shadow: 8px 8px 0px 0px #002E25
 }
 
 .location-image {
-    margin-top: 1.5vh;
+    margin-top: 0.5vh;
     min-height: 10vh;
     max-height: 10vh;
-    width: 85%;
+    width: 96%;
+    margin-left: 2%;
     height: 20vh;
     border-radius: 10px;
-    border: 2px solid black;
 }
 
 .location-name {
     width: 38vw;
     font-size: 20px;
-    height: 1.5vh;
+    height: 4vh;
+    text-align: start;
+    margin-top: 0.5vh;
+    margin-left: 2%;
 
 }
-.h6-locations {
-    display: flex;
-    justify-content: center;
-    flex-direction:row;
-    gap: 10px
+.h6-locations h4 {
+    margin: 2%;
+    font-size: 13px;
+    line-height: 10px;
+    text-align: start;
+    margin-bottom: 2vh;
 }
-.h6-locations h6 {
-    width: 40%;
+.h6-locations p{
+    margin: 2%;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: start;
 }
