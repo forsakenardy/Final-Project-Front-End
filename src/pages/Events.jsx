@@ -81,7 +81,17 @@ function Events({ events, setEvents }) {
                 <div className="event-card" key={event._id}>
                     <div>
                         <div className="date"><p>{event.date} at {event.time}</p></div>
-                        <h2 className="event-name">{event.name}</h2>
+                        <h3 className="event-name">{event.name}</h3>
+                        {isLoggedIn && (
+                            !event.participants.some(participant => participant.userId === userId) ? (
+                                <button className="join-event-button" onClick={() => handleSignUpClick(event._id)}>Join</button>
+                            ) : (
+                                <div className = "joined-event">
+                                    <h6>You have signed up</h6>
+                                    <button className="joined-event-button" onClick={() => handleCancelSignUpClick(event._id)}>Cancel</button>
+                                </div>
+                            )
+                        )}
                     </div>
                     <div>
                         <p>{event.description}</p>
@@ -93,16 +103,7 @@ function Events({ events, setEvents }) {
                                 <li key={index}>{participant.userName}</li>
                             ))}
                         </ul>
-                        {isLoggedIn && (
-                            !event.participants.some(participant => participant.userId === userId) ? (
-                                <button onClick={() => handleSignUpClick(event._id)}>Join</button>
-                            ) : (
-                                <>
-                                    <h1>You have signed up</h1>
-                                    <button onClick={() => handleCancelSignUpClick(event._id)}>Cancel</button>
-                                </>
-                            )
-                        )}
+                        
                     </div>
                 </div>
             ))}

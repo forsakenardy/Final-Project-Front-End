@@ -100,7 +100,7 @@ function Profile({ profile, getProfile }) {
                             />
                         </div>
                         <div className="edit-location">
-                            <label > Where are u now?:</label>
+                            <label > Where are you now?:</label>
                             <select type="text"
                                 name="location"
                                 value={editedProfile.location}
