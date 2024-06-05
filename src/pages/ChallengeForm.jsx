@@ -1,7 +1,6 @@
 const API_URL = import.meta.env.VITE_API_URL;
 import axios from "axios";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth.context";
 
 function ChallengeForm({ matches, getMatch }) {
@@ -15,8 +14,7 @@ function ChallengeForm({ matches, getMatch }) {
         return null
     }
 
-    const navigate = useNavigate();
-    const { user, isLoggedIn } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const handleJoin = (matchId) => {
         axios.put(
