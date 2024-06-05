@@ -91,24 +91,24 @@ function LocationInfo({ locations, getLocations }) {
             <h3 className="location-net">{`type of net: ${locationCard.net}`}</h3>
             <h3 className="location-barServise">{locationCard.barService ? "We have bar service" : "We don't have bar service"}</h3>
 
-            <ul>
+            <div>
                 {locationCard.horarios.map((horario, index) => (
-                    <li key={index}>
+                    <div className="li" key={index}>
                         <div className="horario">
                             <h5 className="list">From: {horario.horaInicio} to: {horario.horaFin}</h5>
-                            {isLoggedIn && !horario.reserved && (
-                                <button className="reservar" onClick={() => handleReserveClick(index)}>Book</button>
-                            )}
-                            {isLoggedIn && reservedIndices.includes(index) && horario.reservedby === user.name && (
-                                    <button className="cancel" onClick={() => handleCancelReservation(index)}>Cancel booking</button>
+                            {isLoggedIn && horario.reserved && (
+                                <p>Reserved by: {horario.reservedby}</p>
                             )}
                         </div>
-                        {isLoggedIn && horario.reserved && (
-                            <h2>Reserved by: {horario.reservedby}</h2>
+                        {isLoggedIn && reservedIndices.includes(index) && horario.reservedby === user.name && (
+                            <button className="cancel" onClick={() => handleCancelReservation(index)}>  Cancel booking</button>
                         )}
-                    </li>
+                        {isLoggedIn && !horario.reserved && (
+                            <button className="reserve" onClick={() => handleReserveClick(index)}>Book</button>
+                        )}
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
