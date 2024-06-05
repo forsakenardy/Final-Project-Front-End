@@ -54,11 +54,10 @@ function Navbar() {
                         <NavLink onClick={toggleClass} to={`/profile/${user._id}`}><h1>View Profile</h1></NavLink>
                         <NavLink onClick={toggleClass} to="/creatematches"><h1>Create a Match!</h1></NavLink>
                         <NavLink onClick={toggleClass} to="/users/challengeform"><h1>Matches</h1></NavLink>
-                        <Link to="/"><button onClick={() => {
+                        <Link to="/"><button className="cancel margin-left" onClick={() => {
                             logOutUser();
                             toggleClass();
                         }}>Log Out</button></Link>
-                        <span>{user && user.name}</span>
                     </div>
                 }
                 {!isLoggedIn &&
