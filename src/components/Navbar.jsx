@@ -27,20 +27,19 @@ function Navbar() {
     const toggleClass = () => {
         setIsPressed((prevState) => !prevState);
     };
-    const[showSidebar, setShowSidebar] = useState(false)
+    const defaultImage = "https://i.ibb.co/yyVDCt2/user-removebg-preview.png"
 
-    const defaultImage = "https://c0.klipartz.com/pngpicture/81/570/gratis-png-perfil-logo-iconos-de-computadora-usuario-usuario.png"
 
 
     return (
         <>
             <div className="navbar">
                 <div className="navlinks">
-                    <NavLink to="/"><h1>Home</h1></NavLink>
-                    <NavLink to="/locations"><h1>Locations</h1></NavLink>
-                    <NavLink to="/events"><h1>Events</h1></NavLink>
+                    <NavLink to="/"><h4>Home</h4></NavLink>
+                    <NavLink to="/locations"><h4>Locations</h4></NavLink>
+                    <NavLink to="/events"><h4>Events</h4></NavLink>
 
-                    {isLoggedIn && <NavLink to="/users"><h1>Users</h1></NavLink>}
+                    {isLoggedIn && <NavLink to="/users"><h4>Users</h4></NavLink>}
                 </div>
                 {isLoggedIn &&
                     <img 
@@ -64,8 +63,8 @@ function Navbar() {
                 }
                 {!isLoggedIn &&
                     <div className="navlinks ">
-                        <NavLink to="/signup"><h1>Sign Up</h1></NavLink>
-                        <NavLink to="/loginForm"><h1>Log In</h1></NavLink>
+                        <NavLink to="/signup"><h4>Sign Up</h4></NavLink>
+                        <NavLink to="/loginForm"><h4>Log In</h4></NavLink>
                     </div>
                 }
             </div>

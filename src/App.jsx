@@ -99,8 +99,6 @@ function App() {
   useEffect(() => {
     getLocations();
     getEvents();
-    
-    
   }, []);
 
   useEffect(()=>{

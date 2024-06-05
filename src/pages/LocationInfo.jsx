@@ -95,12 +95,12 @@ function LocationInfo({ locations, getLocations }) {
                 {locationCard.horarios.map((horario, index) => (
                     <li key={index}>
                         <div className="horario">
-                            <h5>From: {horario.horaInicio} to: {horario.horaFin}</h5>
+                            <h5 className="list">From: {horario.horaInicio} to: {horario.horaFin}</h5>
                             {isLoggedIn && !horario.reserved && (
                                 <button className="reservar" onClick={() => handleReserveClick(index)}>Book</button>
                             )}
                             {isLoggedIn && reservedIndices.includes(index) && horario.reservedby === user.name && (
-                                    <button className="cancelar" onClick={() => handleCancelReservation(index)}>Cancel booking</button>
+                                    <button className="cancel" onClick={() => handleCancelReservation(index)}>Cancel booking</button>
                             )}
                         </div>
                         {isLoggedIn && horario.reserved && (

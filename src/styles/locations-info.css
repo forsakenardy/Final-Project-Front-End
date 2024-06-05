@@ -7,3 +7,21 @@
     width: 90vw;
     border-radius: 2vw;
 }
+.horario {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 20vw;
+    line-height: 1px;
+
+}
+.list {
+    width: 60vw;
+}
+.cancel {
+    border-radius: 50%;
+}
+li {
+    list-style: none;
+    border-bottom: 1px solid white;
+}
