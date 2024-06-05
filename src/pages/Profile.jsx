@@ -89,7 +89,7 @@ function Profile({ profile, getProfile }) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="edit=phone">
+                        <div className="edit-phone">
                             <label >New Phone Number:</label>
                             <input
                                 placeholder="Only digits"

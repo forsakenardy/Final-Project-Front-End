@@ -91,6 +91,7 @@ body h5 {
 }
 .about-us {
     height: 75vh;
+    overflow: auto;
 }
 .about-us h1{
 text-align: center;

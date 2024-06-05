@@ -6,6 +6,8 @@
     border: 1px solid black;
     margin-top: 10vw;
     border-radius: 10vw;
+    width: 90%;
+    margin-left: 5vw;
 }
 .matches-to-join button {
     border-radius: 10px;
