@@ -2,6 +2,7 @@
     padding-top: 3vh;
     width: 90vw;
     padding-left: 4vw;
+    
 }
 .locationinfo-image{
     width: 90vw;
@@ -39,4 +40,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+.go-back-button {
+   margin-top: 10px;
+   margin-bottom: 10px;
+    margin-left: 42%;
+    align-items: center;
+    border-radius: 10px;
+    width: 17vw;
+    height: 6vh;
+    color: #FFA53C;
+    background-color: #004D40;
 }

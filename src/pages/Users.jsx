@@ -41,7 +41,7 @@ function Users({ profile, matches }) {
                 <h4 className="user-card1">Name</h4>
                 <h5 className="user-card1">Rank</h5>
                 <h4 className="user-card1">Location</h4>
-                <h4 className="foto">Foto</h4>
+                <h4 className="foto">Photo</h4>
             </div>
             {
                 profile && profile.map((user) => {
