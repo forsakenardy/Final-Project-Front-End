@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { AuthContext } from "../auth.context"
 import { useContext } from "react"
+import "../styles/matches.css"
 
 
 
@@ -48,8 +49,8 @@ function Matches({ match, locations, getMatch, getLocations}) {
 
 const requestedForm = {location, day, time, comment}
     return (
-        <div>
-            <form onSubmit={requestedForm ? handleMatchSubmit : "You need to fill the location, day, time and comment"}>
+        <div >
+            <form className="matches-create" onSubmit={requestedForm ? handleMatchSubmit : "You need to fill the location, day, time and comment"}>
                 <label>Location:</label>
                 <select type="text" name="location" onChange={handleLocation}>
                     {locations.map((location) => {
@@ -86,7 +87,7 @@ const requestedForm = {location, day, time, comment}
                     <option value={false}>No</option>
                     <option value={true}>Yes</option>
                 </select>
-                <button type="submit">Matching!</button>
+                <button type="submit">Let's play!</button>
                
             </form>
         </div>

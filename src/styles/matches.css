@@ -1,0 +1,21 @@
+.matches-create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px
+}
+
+.matches-create label {
+color: #FFA53C;
+}
+
+.matches-create button {
+    border-radius: 10px;
+    width: 17vw;
+    height: 6vh;
+    color: #FFA53C;
+    background-color: #004D40;
+    font-size: 12px;
+    margin-top: 3vw;
+    margin-bottom: 2vw;
+}

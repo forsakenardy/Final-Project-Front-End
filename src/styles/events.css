@@ -7,9 +7,9 @@
     gap: 3vh;
     overflow: auto;
 }
+
 .event-card {
     width: 90vw;
-    height: 50vh;
     margin-left: 5vw;
     display: flex;
     flex-direction: row;
@@ -19,9 +19,9 @@
 }
 
 .date {
-    width: 17vw;
-    height: 17vw;
-    border-radius: 50%;  
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
     line-height: 100%;
     margin-left: 3vw;
     margin-top: 3vw;
@@ -29,22 +29,36 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #004D40;
+    color: black;
+    font-weight: 1000;
     background: black;
     background: radial-gradient(circle at 100px 100px, #000, #FFA53C)
 }
+
+.date p {
+    font-size: 10px;
+    
+}
+
 .event-name {
     margin-left: 2vw;
-    margin-bottom: none;
 }
+
+.event-card ul {
+    list-style: none;
+    margin-left: -13vw;
+    font-size: 12px;
+}
+
 .joined-event {
     display: flex;
     flex-direction: column;
     align-items: start;
     margin-left: 2vw;
-   margin-top: -8vw;
+    margin-top: -8vw;
 
 }
+
 .join-event-button {
     border-radius: 10px;
     width: 17vw;
@@ -54,11 +68,17 @@
     margin-bottom: 2vw;
     margin-left: 2vw
 }
+
+.joined-event h6 {
+    color: #FFA53C;
+    margin-left: 2vw;
+}
+
 .joined-event-button {
     border-radius: 10px;
     width: 17vw;
     height: 6vh;
-    color: #FFA53C;
+    color: rgb(220, 98, 120);
     background-color: #004D40;
     margin-bottom: 2vw
 }

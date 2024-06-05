@@ -87,7 +87,7 @@ function Events({ events, setEvents }) {
                                 <button className="join-event-button" onClick={() => handleSignUpClick(event._id)}>Join</button>
                             ) : (
                                 <div className = "joined-event">
-                                    <h6>You have signed up</h6>
+                                    <h6>You are signed up!</h6>
                                     <button className="joined-event-button" onClick={() => handleCancelSignUpClick(event._id)}>Cancel</button>
                                 </div>
                             )

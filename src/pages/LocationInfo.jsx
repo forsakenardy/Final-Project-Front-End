@@ -108,6 +108,7 @@ function LocationInfo({ locations, getLocations }) {
                         )}
                     </div>
                 ))}
+                <button className="go-back-button" onClick={()=>navigate(-1)}>Back</button>
             </div>
         </div>
     );
