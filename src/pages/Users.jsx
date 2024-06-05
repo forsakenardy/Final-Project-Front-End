@@ -37,15 +37,21 @@ function Users({ profile, matches }) {
 
     return (
         <div className="users">
+            <div className="user-card">
+                <h4 className="user-card1">Name</h4>
+                <h5 className="user-card1">Rank</h5>
+                <h4 className="user-card1">Location</h4>
+                <h4 className="foto">Foto</h4>
+            </div>
             {
                 profile && profile.map((user) => {
                     return (
                         <div key={user._id} className="user-card">
-                            <h2>{user.name}</h2>
-                            <h2>{`Rank: ${user.rank}`}</h2>
-                            <h2>{`Location: ${user.location}`}</h2>
-                            <NavLink to="/creatematches" ><button onSubmit={handleChallenge}>Send a challenge</button></NavLink>
 
+                            <p>{user.name}</p>
+                            <h5>{user.rank}</h5>
+                            <p>{user.location}</p>
+                            <img className="usersPage-image" src={user.image} alt="" />
                         </div>
                     )
                 }

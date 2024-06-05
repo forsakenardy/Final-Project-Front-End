@@ -25,7 +25,6 @@
     line-height: 100%;
     margin-left: 3vw;
     margin-top: 3vw;
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,7 +34,6 @@
     background: radial-gradient(circle at 100px 100px, #000, #FFA53C)
 }
 .event-name {
-    
     margin-left: 2vw;
     margin-bottom: none;
 }
