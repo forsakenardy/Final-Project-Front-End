@@ -1,0 +1,17 @@
+.matches-to-join {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    margin-top: 10vw;
+    border-radius: 10vw;
+}
+.matches-to-join button {
+    border-radius: 10px;
+    width: 17vw;
+    height: 6vh;
+    color: #FFA53C;
+    background-color: #004D40;
+    margin-bottom: 2vw;
+}

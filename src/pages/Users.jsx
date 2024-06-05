@@ -42,8 +42,8 @@ function Users({ profile, matches }) {
                     return (
                         <div key={user._id} className="user-card">
                             <h2>{user.name}</h2>
-                            <h2>{`rank: ${user.rank}`}</h2>
-                            <h2>{`location: ${user.location}`}</h2>
+                            <h2>{`Rank: ${user.rank}`}</h2>
+                            <h2>{`Location: ${user.location}`}</h2>
                             <NavLink to="/creatematches" ><button onSubmit={handleChallenge}>Send a challenge</button></NavLink>
 
                         </div>

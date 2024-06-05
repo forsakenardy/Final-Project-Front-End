@@ -2,6 +2,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../auth.context";
+import "../styles/challengeform.css"
 
 function ChallengeForm({ matches, getMatch }) {
 
@@ -51,13 +52,13 @@ function ChallengeForm({ matches, getMatch }) {
         <div>
             {matches && matches.map((match) => {
                 return (
-                    <div key={match._id}>
+                    <div className="matches-to-join" key={match._id}>
 
                         <p>{match.location?.name ? match.location.name : "WTF man"}</p>
                         <p>{match.day} {match.time}</p>
                         <p>{match.comment}</p>
                         <p>{match.pairs}</p>
-                        <p>{match.createdBy?.name ? match.createdBy.name : "No name, no party"}</p>
+                        <p>Created by: {match.createdBy?.name ? match.createdBy.name : "No name, no party"}</p>
                         <p>{match.participants.map((participant) => participant.name)}</p>
 
                         {!checkId(match.participants, user) ? <button onClick={() => handleJoin(match._id)}>Join!</button> : "You are booked"}
