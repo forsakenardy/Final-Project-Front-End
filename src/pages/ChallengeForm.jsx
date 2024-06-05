@@ -16,7 +16,7 @@ function ChallengeForm({ matches, getMatch }) {
     }
 
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext);
+    const { user, isLoggedIn } = useContext(AuthContext);
 
     const handleJoin = (matchId) => {
         axios.put(
@@ -65,7 +65,7 @@ function ChallengeForm({ matches, getMatch }) {
                         {!checkId(match.participants, user) ? <button onClick={() => handleJoin(match._id)}>Join!</button> : "You are booked"}
 
                         {checkId(match.participants, user) && <button onClick={()=> handleUnbook(match._id)}>Unbook</button> }
-                         <button onClick={() => handleCancelMatch(match._id)}>Cancel</button> {/*que solo tenga el botón quien haya creado el partido*/}
+                         {match.createdBy?.name === user.name && <button onClick={() => handleCancelMatch(match._id)}>Delete match</button>} {/*que solo tenga el botón quien haya creado el partido*/}
 
 
                     </div>
