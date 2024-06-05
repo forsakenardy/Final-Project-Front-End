@@ -63,7 +63,7 @@ function ChallengeForm({ matches, getMatch }) {
 
                         {!checkId(match.participants, user) ? <button onClick={() => handleJoin(match._id)}>Join!</button> : "You are booked"}
 
-                        {checkId(match.participants, user) && <button onClick={()=> handleUnbook(match._id)}>Unbook</button> }
+                        {checkId(match.participants, user) && <button className="cancel-booking" onClick={()=> handleUnbook(match._id)}>Unbook</button> }
                          {match.createdBy?.name === user.name && <button onClick={() => handleCancelMatch(match._id)}>Delete match</button>} {/*que solo tenga el botón quien haya creado el partido*/}
 
 

@@ -1,5 +1,6 @@
 .profile {
     height: 75vh;
+    
 }
 
 .my-profile {
@@ -26,4 +27,45 @@
 }
 .right-profile {
     width: 48vw;
+}
+.editor {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color:#FFA53C
+}
+
+.edit-name {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.edit-phone {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.edit-location {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.edit-image {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.edit-description {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.editor button {
+    margin-top: 3vw;
+    border-radius: 10px;
+    width: 17vw;
+    height: 6vh;
+    color: #FFA53C;
+    background-color: #004D40
 }
