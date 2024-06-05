@@ -32,35 +32,37 @@ function SignupPage(props) {
 
     }
     return (
-        <div className="signup-form">
-            <h1>Sign Up</h1>
-            <form onSubmit={handleSignupSubmit}>
-                <div>
-                    <label>Name:</label>
-                    <input type="text" name="name" value={name} onChange={handleName} />
-                </div>
-                <div>
-                    <label>Email:</label>
-                    <input type="email" name="email" value={email} onChange={handleEmail} />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" name="password" value={password} onChange={handlePassword} />
-                </div>
-                <div>
-                    <label>Location:</label>
-                    <select name="location" value={location} onChange={handleLocation}>
-                        <option value="bilbao">Bilbao</option>
-                        <option value="barcelona">Barcelona</option>
-                        <option value="madrid">Madrid</option>
-                        <option value="la habana">La Habana</option>
-                    </select>
-                </div>
-                <button type="submit">Sign Up</button>
-            </form>
-            {errorMessage && <p>{errorMessage}</p>}
-            <p>Already have an account?</p>
-            <Link to="/Loginform">Login</Link>
+        <div className="sign-page">
+            <div className="signup-form">
+                <h1>Sign Up</h1>
+                <form onSubmit={handleSignupSubmit}>
+                    <div>
+                        <label>Name:</label>
+                        <input type="text" name="name" value={name} onChange={handleName} />
+                    </div>
+                    <div>
+                        <label>Email:</label>
+                        <input type="email" name="email" value={email} onChange={handleEmail} />
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input type="password" name="password" value={password} onChange={handlePassword} />
+                    </div>
+                    <div>
+                        <label>Location:</label>
+                        <select name="location" value={location} onChange={handleLocation}>
+                            <option value="bilbao">Bilbao</option>
+                            <option value="barcelona">Barcelona</option>
+                            <option value="madrid">Madrid</option>
+                            <option value="la habana">La Habana</option>
+                        </select>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                </form>
+                {errorMessage && <p>{errorMessage}</p>}
+                <p>Already have an account?</p>
+                <Link to="/Loginform">Login</Link>
+            </div>
         </div>
     )
 }

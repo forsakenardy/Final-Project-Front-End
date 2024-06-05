@@ -32,9 +32,18 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    color:#FFA53C
+    gap: 2vh;
+    color:#FFA53C;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding-top: 5vh;
 }
-
+.editor input {
+    background-color: #FFA53C;
+}
+.editor select {
+    background-color: #FFA53C;
+}
 .edit-name {
     display: flex;
     justify-content: center;
@@ -68,4 +77,9 @@
     height: 6vh;
     color: #FFA53C;
     background-color: #004D40
+}
+
+.save-cancel-buttons {
+    display: flex;
+    gap: 10vw;
 }

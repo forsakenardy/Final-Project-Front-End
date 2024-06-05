@@ -34,7 +34,7 @@ function LoginForm(props) {
 
 
     return (
-        <div>
+        <div className="sign-page ">
             <h1>Login</h1>
 
             <form onSubmit={handleLoginSubmit}>

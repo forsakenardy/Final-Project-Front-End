@@ -80,7 +80,7 @@ function Events({ events, setEvents }) {
             {events.map((event) => (
                 <div className="event-card" key={event._id}>
                     <div>
-                        <div className="date"><p>{event.date} at {event.time}</p></div>
+                        <div className="date"><p>{event.date} <br /> at {event.time}</p></div>
                         <h3 className="event-name">{event.name}</h3>
                         {isLoggedIn && (
                             !event.participants.some(participant => participant.userId === userId) ? (
