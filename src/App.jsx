@@ -18,10 +18,14 @@ import IsAnon from './components/isAnon';
 import IsPrivate from './components/isPrivate';
 import axios from 'axios';
 import sound from './assets/images/ping-pong.mp3'
+import { AuthContext } from './auth.context';
+import { useContext } from 'react';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 function App() {
+  const {user} = useContext(AuthContext)
+  
   const [locations, setLocations] = useState([]);
   const [events, setEvents] = useState([]);
   const [matches, setMatches] = useState([]);
@@ -46,10 +50,10 @@ function App() {
   const getLocations = async () => {
     try {
       const storedToken = localStorage.getItem("authToken");
-      if (!storedToken) {
+     /* if0 (!storedToken) {
         throw new Error("No auth token found");
-      }
-      const response = await axios.get(`${API_URL}/locations/`, { headers: { Authorization: `Bearer ${storedToken}` } });
+      }*/
+      const response = await axios.get(`${API_URL}/locations/`, /*{ headers: { Authorization: `Bearer ${storedToken}` } }*/);
       const locations = response.data;
       console.log("data is good", locations);
       setLocations(locations);
@@ -60,11 +64,11 @@ function App() {
 
   const getEvents = async () => {
     try {
-      const storedToken = localStorage.getItem("authToken");
+      /*const storedToken = localStorage.getItem("authToken");
       if (!storedToken) {
         throw new Error("No auth token found");
-      }
-      const response = await axios.get(`${API_URL}/events/`, { headers: { Authorization: `Bearer ${storedToken}` } });
+      }*/
+      const response = await axios.get(`${API_URL}/events/`,/*{ headers: { Authorization: `Bearer ${storedToken}` } }*/);
       const events = response.data;
       console.log("data is good", events);
       setEvents(events);
@@ -95,9 +99,14 @@ function App() {
   useEffect(() => {
     getLocations();
     getEvents();
-    getProfile();
-    getMatch();
+    
+    
   }, []);
+
+  useEffect(()=>{
+    getMatch();
+    getProfile();
+  }, [user])
 
   useEffect(() => {
     document.addEventListener('click', playSound);

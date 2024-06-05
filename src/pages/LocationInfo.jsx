@@ -87,7 +87,7 @@ function LocationInfo({ locations, getLocations }) {
             <h1 className="location-name1">{locationCard.name}</h1>
             <p className="location-description">{locationCard.description}</p>
             <h3 className="location-place">{locationCard.place}</h3>
-            <h3 className="location-rackets">{locationCard.rackets ? "rackets available" : "rackets not available"}</h3>
+            <h3 className="location-rackets">{locationCard.rackets ? "Rackets available" : "Rackets not available"}</h3>
             <h3 className="location-net">{`type of net: ${locationCard.net}`}</h3>
             <h3 className="location-barServise">{locationCard.barService ? "We have bar service" : "We don't have bar service"}</h3>
 
