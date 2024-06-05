@@ -83,3 +83,27 @@ body h5 {
     0% { transform: rotate(0deg) }
     100% { transform: rotate(360deg) }
 }
+
+
+.us {
+    width: 95vw;
+    margin-left: 5vw;
+}
+.about-us {
+    height: 75vh;
+}
+.about-us h1{
+text-align: center;
+}
+.about-us p{
+    margin-left: 5vw;
+}
+.about-us ul {
+    margin-left: 5vw;
+}
+.about-uslinkedin {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}

@@ -1,7 +1,14 @@
+.profile {
+    height: 75vh;
+}
+
 .my-profile {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.my-profile h1 {
+    color: #FFA53C;
 }
 
 .left-profile {

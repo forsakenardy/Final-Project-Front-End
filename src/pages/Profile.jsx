@@ -139,17 +139,17 @@ function Profile({ profile, getProfile }) {
                     <div className="my-profile">
                         <div className="left-profile">
                             <img className="profile-image" src={profileCard.image} alt="profile image" />
-                            <h1>{profileCard.name}</h1>
+                            <h2>{profileCard.name}</h2>
                             <p>email: {profileCard.email}</p>
-                            <p>phone number: {profileCard.phoneNumber}</p>
-                            <h1>Elo: {profileCard.rank}</h1>
-                            <button onClick={handleEditClick}>Edit Profile</button>
+                            <h4>phone number: {profileCard.phoneNumber}</h4>
+                            <h4>Location: {profileCard.location}</h4>
+                           
+                            <button className="reserve" onClick={handleEditClick}>Edit Profile</button>
                         </div>
                         <div className="right-profile">
-                            <h1>Location: </h1>
-                            <h3>{profileCard.location}</h3>
-                            <h1>Description: </h1>
-                            <h2>{profileCard.description}</h2>
+                            <h3>Description: </h3>
+                            <p>{profileCard.description}</p>
+                            <h1>Rank: {profileCard.rank}</h1>
                         </div>
                     </div>
                 )}
