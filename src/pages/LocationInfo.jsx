@@ -97,10 +97,10 @@ function LocationInfo({ locations, getLocations }) {
                         <div className="horario">
                             <h5>From: {horario.horaInicio} to: {horario.horaFin}</h5>
                             {isLoggedIn && !horario.reserved && (
-                                <button className="reservar" onClick={() => handleReserveClick(index)}>Reserve</button>
+                                <button className="reservar" onClick={() => handleReserveClick(index)}>Book</button>
                             )}
                             {isLoggedIn && reservedIndices.includes(index) && horario.reservedby === user.name && (
-                                    <button className="cancelar" onClick={() => handleCancelReservation(index)}>Cancelar reserva</button>
+                                    <button className="cancelar" onClick={() => handleCancelReservation(index)}>Cancel booking</button>
                             )}
                         </div>
                         {isLoggedIn && horario.reserved && (
