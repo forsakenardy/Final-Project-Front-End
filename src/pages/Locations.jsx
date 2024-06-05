@@ -13,6 +13,8 @@ function Locations({ locations }) {
                             <div className="location-cards">
                                 <img className="location-image" src={location.image} alt="location image" />
                                 <h2 className="location-name">{location.name}</h2>
+                                <h3>{location.place}</h3>
+                                <h3>{location.rackets ? "Rackets available" : "Rackets not available"}</h3>
                             </div>
                         </Link>
 
