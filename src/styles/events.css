@@ -32,7 +32,8 @@
     color: black;
     font-weight: 1000;
     background: black;
-    background: radial-gradient(circle at 100px 100px, #000, #FFA53C)
+    background: radial-gradient(circle at 100px 100px, #000, #FFA53C);
+    box-shadow: 6px 3px 35px -8px rgba(0,0,0,0.75);
 }
 
 .date p {
