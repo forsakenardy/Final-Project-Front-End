@@ -101,7 +101,7 @@ function LocationInfo({ locations, getLocations }) {
                             )}
                         </div>
                         {isLoggedIn && reservedIndices.includes(index) && horario.reservedby === user.name && (
-                            <button className="cancel" onClick={() => handleCancelReservation(index)}>  Cancel booking</button>
+                            <button className="cancel" onClick={() => handleCancelReservation(index)}>Cancel booking</button>
                         )}
                         {isLoggedIn && !horario.reserved && (
                             <button className="reserve" onClick={() => handleReserveClick(index)}>Book</button>

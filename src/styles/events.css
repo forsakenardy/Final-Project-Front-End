@@ -26,13 +26,11 @@
     line-height: 100%;
     margin-left: 3vw;
     margin-top: 3vw;
-    font-size: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 .event-name {
-    font-size: 18px;
     margin-left: 2vw;
 }
