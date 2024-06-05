@@ -65,7 +65,8 @@ body h5 {
     40% { transform: rotate(5deg) translateY(80vh) scale(0.65); }
     50% { transform: rotate(8deg) translateY(110vh) scale(1); }
     55% { transform: rotate(8deg) translateY(130vh) scale(0.8); }
-    60% { transform: rotate(8deg) translateY(135vh) scale(0.75); }
+    60% { transform: rotate(8deg) translateY(135vh) scale(1); }
+    70% { transform: rotate(8deg) translateY(165vh) scale(0.7); }
     85% { transform: rotate(8deg) translateY(200vh) scale(0.75); }
     100% { transform: rotate(8deg) translateY(240vh) scale(0.75); }
 }

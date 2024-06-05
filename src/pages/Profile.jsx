@@ -72,6 +72,8 @@ function Profile({ profile, getProfile }) {
         return <div><img className="ball2" src="https://i.ibb.co/WKTHyR0/white-ball.png" alt="" /></div>;
     }
 
+    const defaultImage = "https://c0.klipartz.com/pngpicture/81/570/gratis-png-perfil-logo-iconos-de-computadora-usuario-usuario.png"
+    
     return (
         <div className="profile">
             <div>

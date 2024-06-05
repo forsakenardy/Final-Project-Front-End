@@ -39,12 +39,11 @@ function Navbar() {
                     <NavLink to="/events"><h1>Events</h1></NavLink>
 
                     {isLoggedIn && <NavLink to="/users"><h1>Users</h1></NavLink>}
-                    {isLoggedIn && <NavLink to="/creatematches"><h1>Matches</h1></NavLink>}
                 </div>
                 {isLoggedIn &&
-                    <img
+                    <img 
                         onClick={toggleClass}
-                        className="perfil-image"
+                        className="profile1-image"
                         src={!user.image ? defaultImage : user.image}
                         alt="perfil image"
                     />
@@ -52,6 +51,7 @@ function Navbar() {
                 {isLoggedIn &&
                     <div className={isPressed ? 'menu-links' : 'hidden'}>
                         <NavLink onClick={toggleClass} to={`/profile/${user._id}`}><h1>View Profile</h1></NavLink>
+                        <NavLink onClick={toggleClass} to="/creatematches"><h1>Matches</h1></NavLink>
                         <NavLink onClick={toggleClass} to="/users/challengeform"><h1>Play's History</h1></NavLink>
                         <Link to="/"><button onClick={() => {
                             logOutUser();
