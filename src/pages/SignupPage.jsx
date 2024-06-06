@@ -61,11 +61,11 @@ function SignupPage(props) {
                             <option value="la habana">La Habana</option>
                         </select>
                     
-                </form>
                     <div className="center-sign-up-button">
 
                     <button className="reserve" type="submit">Sign Up</button>
                     </div>
+                </form>
                 {errorMessage && <p>{errorMessage}</p>}
                 <p>Already have an account?</p>
                 <Link to="/Loginform">Login</Link>
