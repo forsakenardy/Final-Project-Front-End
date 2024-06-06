@@ -52,7 +52,7 @@ function ChallengeForm({ matches, getMatch }) {
 
 
     return (
-        <div>
+        <div className="the-matches-page">
             {matches && matches.map((match) => {
                 return (
                     <div className="matches-to-join" key={match._id}>

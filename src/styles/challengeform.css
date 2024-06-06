@@ -1,3 +1,7 @@
+.the-matches-page {
+    padding-bottom: 20px;
+}
+
 .matches-to-join {
     display: flex;
     justify-content: center;
@@ -6,8 +10,9 @@
     border: 3px solid #FFA53C;
     margin-top: 10vw;
     border-radius: 5vw;
-    width: 90%;
-    margin-left: 5vw;
+    width: 400px;
+    margin-left: 50vw;
+    translate: -50%;
 }
 
 .matches-to-join-title {

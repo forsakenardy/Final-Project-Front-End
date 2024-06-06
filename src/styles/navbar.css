@@ -39,6 +39,7 @@
     flex-direction: column;
     animation-duration: 0.5s;
     animation-name: slidein;
+    z-index: 1;
 }
 @keyframes slidein {
     from {
