@@ -24,6 +24,7 @@ width: 20vw;
     border: 2px solid #FFA53C;
     justify-content: space-around;
     align-items: center;
+    border-radius: 10px;
 }
 
 .user-card p {
