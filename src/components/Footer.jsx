@@ -21,8 +21,10 @@ function Footer() {
                     <p>Back End</p>
                 </div>
                 <div className="company">
-                <img className="company-logo" src="https://i.ibb.co/Kb4tD7K/OIG2-removebg-preview.png" alt="Company Logo" />
-                <NavLink to="/aboutUs"><p>About Us</p></NavLink>
+                    <NavLink to="/aboutUs">
+                        <img className="company-logo" src="https://i.ibb.co/Kb4tD7K/OIG2-removebg-preview.png" alt="Company Logo" />
+                        <p>About Us</p>
+                    </NavLink>
                 </div>
             </div>
         </div>

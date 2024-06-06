@@ -21,8 +21,7 @@ width: 20vw;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 2px solid black;
-    border-radius: 20px;
+    border: 2px solid #FFA53C;
     justify-content: space-around;
     align-items: center;
 }

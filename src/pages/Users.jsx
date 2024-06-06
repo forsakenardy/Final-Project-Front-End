@@ -1,5 +1,4 @@
 import "../styles/users.css"
-import { NavLink } from "react-router-dom"
 import axios from "axios"
 import { useContext } from "react";
 import { AuthContext } from "../auth.context";

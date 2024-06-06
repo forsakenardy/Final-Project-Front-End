@@ -41,3 +41,8 @@
     text-align: center;
     line-height: 1px;
 }
+@media (min-width: 680px) {
+    .footer {
+        height: 17vh;
+    }
+}
