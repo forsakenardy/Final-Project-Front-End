@@ -1,15 +1,17 @@
 .matches-create {
     display: flex;
-    margin-left: 5vw;
     width: 90%;
+    padding: 0px 16px;
     flex-direction: column;
     margin-top: 5%;
-    gap: 22px;
+    gap: 20px;
+    overflow: auto;
+    height: 78vh;
+
 }
 
 .matches-create label {
 color: rgba(255, 255, 255, 1);
-align-items: center;
 }
 
 .matches-create input {
@@ -21,18 +23,8 @@ align-items: center;
     height: 30px
 }
 
-.matches-create button {
-    border-radius: 10px;
-    width: 17vw;
-    height: 6vh;
-    color: #FFA53C;
-    background-color: #004D40;
-    font-size: 12px;
-    margin-top: 3vw;
-    margin-bottom: 2vw;
-}
-
 .create-match-title {
     display: flex;
     justify-content: center;
+
 }
