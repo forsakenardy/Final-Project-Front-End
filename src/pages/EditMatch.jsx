@@ -1,41 +1,35 @@
-import { useState } from "react"
-import { Navigate, useNavigate } from "react-router-dom"
-
-import axios from "axios"
+import "../styles/editmatch.css"
 import { AuthContext } from "../auth.context"
-import { useContext } from "react"
-import "../styles/matches.css"
-
-
-
+import { useContext, useEffect, useState } from "react"
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const API_URL = import.meta.env.VITE_API_URL;
 
+function EditMatch({ getMatch, locations }) {
+    const { user } = useContext(AuthContext)
+    const { matchId } = useParams()
+    const today = new Date()
+    const navigate = useNavigate()
 
-function Matches({ match, locations, getMatch, getLocations}) {
-    const [location, setLocation] = useState("ObjetcId: 665854f95f1cf9b18bc43d45");
-    const [day, setDay] = useState("");
-    const [time, setTime] = useState("09:00");
+    const [location, setLocation] = useState("")
+    const [day, setDay] = useState("")
+    const [time, setTime] = useState("09:00")
     const [comment, setComment] = useState("");
     const [pairs, setPairs] = useState(false);
-    
-    
-    const today = new Date();
-    const {user} = useContext(AuthContext);
-    
+
     const handleLocation = (e) => setLocation(e.target.value);
     const handleDay = (e) => setDay(e.target.value);
     const handleTime = (e) => setTime(e.target.value);
     const handleComment = (e) => setComment(e.target.value);
     const handlePairs = (e) => setPairs(e.target.value);
-    
-    const navigate = useNavigate();
 
-    const handleMatchSubmit = (e) => {
 
-       e.preventDefault();
-        const requestBody = { location, day, time, comment, pairs, createdBy: user._id}; 
+    const handleEdit = (e, matchId) => {
+        e.preventDefault();
+        const requestBody = { location, day, time, comment, pairs, createdBy: user._id };
         console.log(requestBody)
-        axios.post(`${API_URL}/matches/`, requestBody)
+        axios.put(`${API_URL}/matches/${matchId}`, requestBody)
             .then((data) => {
                 getMatch();
                 navigate("/users/challengeform");
@@ -47,10 +41,18 @@ function Matches({ match, locations, getMatch, getLocations}) {
             })
     }
 
-const requestedForm = {location, day, time, comment}
+
+
+
+
+    const requestedForm = { location, day, time, comment }
     return (
-        <div >
-            <form className="matches-create" onSubmit={requestedForm ? handleMatchSubmit : "You need to fill the location, day, time and comment"}>
+        <>
+            <div className="edit-title">
+
+                <h2>Edit match</h2>
+            </div>
+            <form className="matches-edit" onSubmit={(e) => handleEdit(e, matchId)}>
                 <label>Location:</label>
                 <select type="text" name="location" onChange={handleLocation}>
                     {locations.map((location) => {
@@ -87,11 +89,10 @@ const requestedForm = {location, day, time, comment}
                     <option value={false}>No</option>
                     <option value={true}>Yes</option>
                 </select>
-                <button type="submit">Let's play!</button>
-               
+                <button type="submit">Commit changes</button>
+
             </form>
-        </div>
+        </>
     )
 }
-
-export default Matches
+export default EditMatch

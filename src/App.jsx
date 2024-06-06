@@ -16,6 +16,7 @@ import Matches from './pages/Matches';
 import AboutUs from './pages/AboutUs';
 import IsAnon from './components/isAnon';
 import IsPrivate from './components/isPrivate';
+import EditMatch from './pages/EditMatch';
 import axios from 'axios';
 import sound from './assets/images/ping-pong.mp3'
 import { AuthContext } from './auth.context';
@@ -128,6 +129,7 @@ function App() {
         <Route path='/users/challengeform' element={<IsPrivate><ChallengeForm matches={matches} locations={locations} getMatch={getMatch} /></IsPrivate>} />
         <Route path='/creatematches' element={<IsPrivate><Matches matches={matches} locations={locations} getMatch={getMatch} /></IsPrivate>} />
         <Route path='/aboutUs' element={<AboutUs />} />
+        <Route path='/editmatch/:matchId' element={<EditMatch getMatch={getMatch} locations={locations} />}></Route>
       </Routes>
       <Footer />
       <audio ref={audioRef} src={sound} autoPlay loop />

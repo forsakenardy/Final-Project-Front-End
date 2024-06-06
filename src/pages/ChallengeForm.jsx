@@ -3,6 +3,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../auth.context";
 import "../styles/challengeform.css"
+import { Link } from "react-router-dom";
 
 function ChallengeForm({ matches, getMatch }) {
 
@@ -48,6 +49,7 @@ function ChallengeForm({ matches, getMatch }) {
 
     }
 
+
     return (
         <div>
             {matches && matches.map((match) => {
@@ -61,10 +63,11 @@ function ChallengeForm({ matches, getMatch }) {
                         <p>Created by: {match.createdBy?.name ? match.createdBy.name : "No name, no party"}</p>
                         <p>{match.participants.map((participant) => participant.name)}</p>
 
-                        {!checkId(match.participants, user) ? <button onClick={() => handleJoin(match._id)}>Join!</button> : "You are booked"}
+                        {!checkId(match.participants, user) ? <button className="join-match-button" onClick={() => handleJoin(match._id)}>Join!</button> : "You are booked"}
 
                         {checkId(match.participants, user) && <button className="cancel-booking" onClick={()=> handleUnbook(match._id)}>Unbook</button> }
-                         {match.createdBy?.name === user.name && <button onClick={() => handleCancelMatch(match._id)}>Delete match</button>} {/*que solo tenga el botón quien haya creado el partido*/}
+                         {match.createdBy?.name === user.name && <Link to={`/editmatch/${match._id}`}> <button className="join-match-button">Edit match</button></Link>} 
+                         {match.createdBy?.name === user.name && <button className="cancel-booking" onClick={() => handleCancelMatch(match._id)}>Delete match</button>} 
 
 
                     </div>
