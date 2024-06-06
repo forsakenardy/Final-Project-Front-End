@@ -73,25 +73,22 @@
     flex-direction: column;
 }
 
-.editor button {
-    width: 30vw;
-    height: 8vh;
-    color: #004D40;
-    background-color: #FFA53C;
-    box-shadow: 8px 8px 0px 0px #002E25;
-    margin-bottom: 5px;
-}
+
 
 .save-cancel-buttons {
     display: flex;
     gap: 10vw;
+    margin-bottom: 5%;
 }
 
-.cancel-edit-profile {
-  
-}
 
 .edit-profile-title {
     display: flex;
     justify-content: center;
+}
+.login-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }

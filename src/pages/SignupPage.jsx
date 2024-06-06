@@ -34,21 +34,25 @@ function SignupPage(props) {
     return (
         <div className="sign-page">
             <div className="signup-form">
-                <h1>Sign Up</h1>
-                <form onSubmit={handleSignupSubmit}>
-                    <div>
+                <div className="sign-up-title">
+
+                <h2>Sign Up</h2>
+                </div>
+
+                <form className="sign-page matches-edit label matches-edit input" onSubmit={handleSignupSubmit}>
+                
                         <label>Name:</label>
                         <input type="text" name="name" value={name} onChange={handleName} />
-                    </div>
-                    <div>
+                    
+                    
                         <label>Email:</label>
                         <input type="email" name="email" value={email} onChange={handleEmail} />
-                    </div>
-                    <div>
+                
+                
                         <label>Password:</label>
                         <input type="password" name="password" value={password} onChange={handlePassword} />
-                    </div>
-                    <div>
+                    
+                    
                         <label>Location:</label>
                         <select name="location" value={location} onChange={handleLocation}>
                             <option value="bilbao">Bilbao</option>
@@ -56,9 +60,12 @@ function SignupPage(props) {
                             <option value="madrid">Madrid</option>
                             <option value="la habana">La Habana</option>
                         </select>
-                    </div>
-                    <button type="submit">Sign Up</button>
+                    
                 </form>
+                    <div className="center-sign-up-button">
+
+                    <button className="reserve" type="submit">Sign Up</button>
+                    </div>
                 {errorMessage && <p>{errorMessage}</p>}
                 <p>Already have an account?</p>
                 <Link to="/Loginform">Login</Link>
