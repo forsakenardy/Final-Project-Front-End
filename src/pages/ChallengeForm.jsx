@@ -40,12 +40,13 @@ function ChallengeForm({ matches, getMatch }) {
     }
 
 
-    const handleCancelMatch = (matchId) =>{
+    const handleCancelMatch = (matchId) => {
         axios.delete(`${API_URL}/matches/${matchId}/${user._id}`)
-        .then(()=> {
-            console.log("match deleted")
-            getMatch()})
-        .catch(()=> console.log("error deleting the match"))
+            .then(() => {
+                console.log("match deleted")
+                getMatch()
+            })
+            .catch(() => console.log("error deleting the match"))
 
     }
 
@@ -55,19 +56,26 @@ function ChallengeForm({ matches, getMatch }) {
             {matches && matches.map((match) => {
                 return (
                     <div className="matches-to-join" key={match._id}>
-
-                        <p>{match.location?.name ? match.location.name : "WTF man"}</p>
+                        <div className="matches-to-join-title">
+                            <p>{match.location?.name ? match.location.name : "WTF man"}</p>
+                        </div>
                         <p>{match.day} {match.time}</p>
                         <p>{match.comment}</p>
                         <p>{match.pairs}</p>
                         <p>Created by: {match.createdBy?.name ? match.createdBy.name : "No name, no party"}</p>
+
                         <p>{match.participants.map((participant) => participant.name)}</p>
+                        <div className="button-position">
 
-                        {!checkId(match.participants, user) ? <button className="join-match-button" onClick={() => handleJoin(match._id)}>Join!</button> : "You are booked"}
+                        {!checkId(match.participants, user) ? <button className="reserve" onClick={() => handleJoin(match._id)}>Join match</button> : "You are booked"}
 
-                        {checkId(match.participants, user) && <button className="cancel-booking" onClick={()=> handleUnbook(match._id)}>Unbook</button> }
-                         {match.createdBy?.name === user.name && <Link to={`/editmatch/${match._id}`}> <button className="join-match-button">Edit match</button></Link>} 
-                         {match.createdBy?.name === user.name && <button className="cancel-booking" onClick={() => handleCancelMatch(match._id)}>Delete match</button>} 
+                        {checkId(match.participants, user) && <button className="go-back-button" onClick={() => handleUnbook(match._id)}>Unbook</button>}
+                        </div>
+                        <div className="delete-match-position">
+                        {match.createdBy?.name === user.name && <Link to={`/editmatch/${match._id}`}> <button className="go-back-button">Edit match</button></Link>}
+
+                        {match.createdBy?.name === user.name && <button className="cancel" onClick={() => handleCancelMatch(match._id)}>Delete match</button>}
+                        </div>
 
 
                     </div>

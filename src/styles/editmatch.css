@@ -27,12 +27,10 @@
 }
 
 .matches-edit button {
-    border-radius: 10px;
-    width: 17vw;
-    height: 6vh;
-    color: #FFA53C;
-    background-color: #004D40;
-    font-size: 12px;
-    margin-top: 3vw;
-    margin-bottom: 2vw;
+    width: 50%;
+    height: 7vh;
+    color: #004D40;
+    background-color: #FFA53C;
+    box-shadow: 8px 8px 0px 0px #002E25;
+    margin-bottom: 15px;
 }

@@ -5,23 +5,53 @@
     align-items: center;
     border: 3px solid #FFA53C;
     margin-top: 10vw;
-    border-radius: 10vw;
+    border-radius: 5vw;
     width: 90%;
     margin-left: 5vw;
 }
+
+.matches-to-join-title {
+    display: flex;
+    justify-content: center;
+    background-color: #FFA53C;
+    width: 100%;
+    border-radius: 4vw 4vw 0 0;
+    color: #004D40;
+    font-weight: bold;
+    line-height: 8px;
+}
+
 .join-match-button {
-    border-radius: 10px;
-    width: 17vw;
-    height: 6vh;
+    width: 30vw;
+    height: 8vh;
+    color: #004D40;
+    background-color: #FFA53C;
+    box-shadow: 8px 8px 0px 0px #002E25;
+    margin-bottom: 5px;
+}
+
+.cancel-booking {
+    width: 30vw;
+    height: 10%;
     color: #FFA53C;
     background-color: #004D40;
-    margin-bottom: 2vw;
+    box-shadow: 8px 8px 0px 0px #002E25;
+    border: 1px solid #FFA53C
 }
-.cancel-booking {
-    border-radius: 10px;
-    width: 17vw;
-    height: 6vh;
-    background-color: #004D40;
-    margin-bottom: 2vw;
-    color: rgb(220, 98, 120);
+
+.button-position {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 5%;
+    gap: 10%
+}
+
+.delete-match-position {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 5%;
+
 }

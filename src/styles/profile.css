@@ -1,5 +1,6 @@
 .profile {
     height: 75vh;
+    overflow: auto;
     
 }
 
@@ -33,16 +34,18 @@
     justify-content: center;
     flex-direction: column;
     gap: 2vh;
-    color:#FFA53C;
+    color:rgba(255, 255, 255, 1);
     margin-left: 5vw;
     margin-right: 5vw;
     padding-top: 5vh;
 }
 .editor input {
-    background-color: #FFA53C;
+    background-color: rgba(200, 232, 226, 1);
+    height: 30px
 }
 .editor select {
-    background-color: #FFA53C;
+    background-color: rgba(200, 232, 226, 1);
+    height: 30px
 }
 .edit-name {
     display: flex;
@@ -71,15 +74,24 @@
 }
 
 .editor button {
-    margin-top: 3vw;
-    border-radius: 10px;
-    width: 17vw;
-    height: 6vh;
-    color: #FFA53C;
-    background-color: #004D40
+    width: 30vw;
+    height: 8vh;
+    color: #004D40;
+    background-color: #FFA53C;
+    box-shadow: 8px 8px 0px 0px #002E25;
+    margin-bottom: 5px;
 }
 
 .save-cancel-buttons {
     display: flex;
     gap: 10vw;
+}
+
+.cancel-edit-profile {
+  
+}
+
+.edit-profile-title {
+    display: flex;
+    justify-content: center;
 }
