@@ -12,45 +12,51 @@
     width: 90vw;
     margin-left: 5vw;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 5vw;
-    border: 1px solid black;
+    flex-direction: column;
+    background-color: #FFA53C;
+    color: #004D40;
+    border-radius: 10px;
+}
+.events p {
+    margin-top: 5px;
+    width: 100%;
+}
+.events h4 {
+    font-weight: 300;
+    margin: 0;
+    margin-left: 2vw;
+    font-size: 12px;
+}
+.events h3 {
+    font-weight: 900;
+    font-size: 14px;
+    margin: 0;
+    margin-left: 2vw;
+    margin-bottom: 20px;
+}
+.event-class-top {
+    border-bottom: 1px solid #004D40;
+    width: 96%;
+    margin-left: 2%;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .date {
-    width: 20vw;
-    height: 20vw;
-    border-radius: 50%;
-    line-height: 100%;
-    margin-left: 3vw;
-    margin-top: 3vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: black;
-    font-weight: 1000;
-    background: black;
-    background: radial-gradient(circle at 100px 100px, #000, #FFA53C);
-    box-shadow: 6px 3px 35px -8px rgba(0,0,0,0.75);
+background-color: #004D40;
+color: #FFA53C;
+height: 40px;
+width: 96%;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+margin-bottom: 10px;
+margin-top: 20px;
+margin-left: 2vw;
 }
-
-.date p {
-    font-size: 10px;
-    
-}
-
 .event-name {
-    margin-left: 2vw;
+    margin-top: 8px;
+    margin-bottom: 0;
 }
-
-.event-card ul {
-    list-style: none;
-   
-    font-size: 12px;
-}
-
 .joined-event {
     display: flex;
     flex-direction: column;
@@ -59,27 +65,34 @@
     margin-top: -8vw;
 
 }
-
-.join-event-button {
-    border-radius: 10px;
-    width: 17vw;
-    height: 6vh;
-    color: #FFA53C;
-    background-color: #004D40;
-    margin-bottom: 2vw;
-    margin-left: 2vw
+.joined-event h6 {
+    color: #004D40;
+    margin: 10px;
+    margin-left: 2vw;
+    margin-top: 35px;
+}
+.event-participants {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.event-participants h3{
+    margin: 0;
 }
 
-.joined-event h6 {
-    color: #FFA53C;
+.more-margin{
+    margin-top: 0px;
+}
+.date h6 {
+    font-weight: 400;
+    margin: 0;
+    margin-top: 5px;
+    margin-left: 2vw;
+}
+.date p {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
     margin-left: 2vw;
 }
 
-.joined-event-button {
-    border-radius: 10px;
-    width: 17vw;
-    height: 6vh;
-    color: rgb(220, 98, 120);
-    background-color: #004D40;
-    margin-bottom: 2vw
-}

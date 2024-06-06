@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: start;
     line-height: 1px;
-    height: 80px;
+    height: 60px;
 }
 .list {
     width: 60vw;
@@ -50,6 +50,7 @@
     height: 40px;
     color: #FFA53C;
     background-color: #004D40;
+    border: 1px solid #FFA53C;
     box-shadow: 8px 8px 0px 0px #002E25
 }
 .blue-color {
@@ -93,5 +94,5 @@
 }
 .timetable-left {
     margin: 20px 0;
-    padding-top: 12px;
+    padding-top: 5px;
 }

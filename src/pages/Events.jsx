@@ -79,32 +79,47 @@ function Events({ events, setEvents }) {
             {error && <p>{error}</p>}
             {events.map((event) => (
                 <div className="event-card" key={event._id}>
-                    <div>
-                        <div className="date"><p>{event.date} <br /> at {event.time}</p></div>
-                        <h3 className="event-name">{event.name}</h3>
-                        {isLoggedIn && (
-                            !event.participants.some(participant => participant.userId === userId) ? (
-                                <button className="join-event-button" onClick={() => handleSignUpClick(event._id)}>Join</button>
-                            ) : (
-                                <div className = "joined-event">
-                                    <h6>You are signed up!</h6>
-                                    <button className="joined-event-button" onClick={() => handleCancelSignUpClick(event._id)}>Cancel</button>
-                                </div>
-                            )
-                        )}
-                    </div>
-                    <div>
+                    <div className="event-class-top">
+                        <h2 className="event-name">{event.name}</h2>
                         <p>{event.description}</p>
-                        <p>Location: {event.location}</p>
-                        <p>ELO Range: {event.elo_range.min} - {event.elo_range.max}</p>
-                        <p>Participants: </p>
-                        <ul>
-                            {event.participants.map((participant, index) => (
-                                <li key={index}>{participant.userName}</li>
-                            ))}
-                        </ul>
-                        
+
                     </div>
+                    <div className="locations-extra">
+                        <div className="locations-rackets">
+                            <h4>Location</h4>
+                            <h3>{event.location}</h3>
+                            {isLoggedIn && (
+                                !event.participants.some(participant => participant.userId === userId) ? (
+                                    <div className="joined-event more-margin">
+                                        <button className="cancel" onClick={() => handleSignUpClick(event._id)}>Join</button>
+                                    </div>
+
+                                ) : (
+                                    <div className="joined-event">
+                                        <h6>You are signed up!</h6>
+                                        <button className="reserve" onClick={() => handleCancelSignUpClick(event._id)}>Cancel</button>
+                                    </div>
+                                )
+                            )}
+                        </div>
+                        <div className="locations-rackets">
+                            <h4>ELO Range</h4>
+                            <h3>{event.elo_range.min} - {event.elo_range.max}</h3>
+                            <h4>Participants: </h4>
+                            <div className="event-participants">
+                                {event.participants.map((participant, index) => (
+                                    <h3 key={index}>{`${participant.userName}-`}</h3>
+                                ))}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div className="date">
+                        <h6>when</h6>
+                        <p>{event.date} / {event.time}</p>
+                    </div>
+
+
                 </div>
             ))}
         </div>
