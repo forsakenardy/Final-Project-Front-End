@@ -7,35 +7,34 @@
 .locationinfo-image{
     width: 90vw;
     border-radius: 2vw;
-    border: 4px solid #FFA53C;
+    box-shadow: 8px 8px 0px 0px #002E25
 }
 .horario {
     display: flex;
     flex-direction: column;
     justify-content: start;
     line-height: 1px;
-
+    height: 80px;
 }
 .list {
     width: 60vw;
 }
 .cancel {
-    border-radius: 10px;
-    width: 17vw;
-    height: 6vh;
-    color: rgb(220, 98, 120);
-    background-color: #004D40;
-}
-.reserve{
-    border-radius: 10px;
-    width: 17vw;
-    height: 6vh;
+    width: 120px;
+    height: 40px;
     color: #FFA53C;
     background-color: #004D40;
+    box-shadow: 8px 8px 0px 0px #002E25
+}
+.reserve{
+    width: 120px;
+    height: 40px;
+    color: #004D40;
+    background-color: #FFA53C;
+    box-shadow: 8px 8px 0px 0px #002E25
 }
 .li {
     list-style: none;
-    border-top: 1px solid white;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -44,11 +43,55 @@
 .go-back-button {
    margin-top: 10px;
    margin-bottom: 10px;
-    margin-left: 42%;
+    margin-left:50%;
+    translate: -50%;
     align-items: center;
-    border-radius: 10px;
-    width: 17vw;
-    height: 6vh;
-    color: rgb(220, 98, 120);
+    width: 120px;
+    height: 40px;
+    color: #FFA53C;
     background-color: #004D40;
+    box-shadow: 8px 8px 0px 0px #002E25
+}
+.blue-color {
+    color: rgba(200, 232,226,1);
+}
+.location-info h6 {
+    font-weight: 300;
+    margin: 0;
+}
+.location-info h4 {
+    font-weight: 300;
+    margin: 0;
+}
+.location-info h3 {
+    font-weight: 300;
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+.location-info p {
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+.location-info h1 {
+    margin: 0;
+    margin-top: 20px;
+    font-size: 32px;
+}
+.locations-rackets {
+    display: flex;
+    flex-direction: column;
+}
+.locations-extra {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+.timetable {
+    padding-top: 25px;
+    border-top: 1px solid rgba(200, 232, 226, 0.3);
+}
+.timetable-left {
+    margin: 20px 0;
+    padding-top: 12px;
 }

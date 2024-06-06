@@ -62,7 +62,7 @@ const requestedForm = {location, day, time, comment}
                         )
 
                     })}
-                </select>
+                </select >
                 <label>Day:</label>
                 <input type="date" value={day} min={today.toISOString().slice(0, 10)} onChange={handleDay} />
                 <label>Time:</label>

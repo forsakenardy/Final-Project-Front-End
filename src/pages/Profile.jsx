@@ -73,7 +73,7 @@ function Profile({ profile, getProfile }) {
     }
 
     const defaultImage = "https://c0.klipartz.com/pngpicture/81/570/gratis-png-perfil-logo-iconos-de-computadora-usuario-usuario.png"
-    
+
     return (
         <div className="profile">
             <div>
@@ -132,8 +132,11 @@ function Profile({ profile, getProfile }) {
                                 onChange={handleChange}
                             />
                         </div>
-                        <button onClick={handleSaveClick}>Save</button>
-                        <button onClick={handleCancelClick}>Cancel</button>
+                        <div className="save-cancel-buttons">
+                            <button onClick={handleSaveClick}>Save</button>
+                            <button onClick={handleCancelClick}>Cancel</button>
+                        </div>
+
                     </div>
                 ) : (
                     <div className="my-profile">
@@ -143,7 +146,7 @@ function Profile({ profile, getProfile }) {
                             <p>email: {profileCard.email}</p>
                             <h4>phone number: {profileCard.phoneNumber}</h4>
                             <h4>Location: {profileCard.location}</h4>
-                           
+
                             <button className="reserve" onClick={handleEditClick}>Edit Profile</button>
                         </div>
                         <div className="right-profile">

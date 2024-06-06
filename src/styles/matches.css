@@ -1,7 +1,8 @@
 .matches-create {
+    padding-top: 5vh;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 2vh;
     margin-left: 5vw;
     margin-right: 5vw;
     height: 75vh;

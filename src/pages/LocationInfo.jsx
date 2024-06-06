@@ -86,20 +86,33 @@ function LocationInfo({ locations, getLocations }) {
             <img className="locationinfo-image" src={locationCard.image} alt="location-image" />
             <h1 className="location-name1">{locationCard.name}</h1>
             <p className="location-description">{locationCard.description}</p>
-            <h3 className="location-place">{locationCard.place}</h3>
-            <h3 className="location-rackets">{locationCard.rackets ? "Rackets available" : "Rackets not available"}</h3>
-            <h3 className="location-net">{`type of net: ${locationCard.net}`}</h3>
-            <h3 className="location-barServise">{locationCard.barService ? "We have bar service" : "We don't have bar service"}</h3>
-
+            <div className="locations-extra">
+                <div className="locations-rackets">
+                    <h4 className="blue-color">Location</h4>
+                    <h3 className="location-place">{locationCard.place}</h3>
+                    <h4 className="blue-color">Rackets</h4>
+                    <h3 className="location-rackets">{locationCard.rackets ? "Available" : "Not Available"}</h3>
+                </div>
+                <div className="locations-rackets">
+                    <h4 className="blue-color">Type of Net</h4>
+                    <h3 className="location-net">{locationCard.net}</h3>
+                    <h4 className="blue-color">Extra</h4>
+                    <h3 className="location-barServise">{locationCard.barService ? "Bar Service" : ""}</h3>
+                </div>
+            </div>
             <div>
+                <h3 className="timetable blue-color">Timetable</h3>
                 {locationCard.horarios.map((horario, index) => (
                     <div className="li" key={index}>
                         <div className="horario">
-                            <h5 className="list">From: {horario.horaInicio} to: {horario.horaFin}</h5>
-                            {isLoggedIn && horario.reserved && (
-                                <p>Reserved by: {horario.reservedby}</p>
-                            )}
+                            <div className="timetable-left">
+                                <h3 className="list">From: {horario.horaInicio} to: {horario.horaFin}</h3>
+                                {isLoggedIn && horario.reserved && (
+                                    <h6 className="blue-color">Reserved by: {horario.reservedby}</h6>
+                                )}
+                            </div>
                         </div>
+
                         {isLoggedIn && reservedIndices.includes(index) && horario.reservedby === user.name && (
                             <button className="cancel" onClick={() => handleCancelReservation(index)}>Cancel booking</button>
                         )}
@@ -108,7 +121,7 @@ function LocationInfo({ locations, getLocations }) {
                         )}
                     </div>
                 ))}
-                <button className="go-back-button" onClick={()=>navigate(-1)}>Back</button>
+                <button className="go-back-button" onClick={() => navigate(-1)}>Back</button>
             </div>
         </div>
     );
