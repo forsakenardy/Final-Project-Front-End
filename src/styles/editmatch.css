@@ -25,12 +25,3 @@
     background-color: rgba(200, 232, 226, 1);
     height: 30px;
 }
-
-.matches-edit button {
-    width: 50%;
-    height: 7vh;
-    color: #004D40;
-    background-color: #FFA53C;
-    box-shadow: 8px 8px 0px 0px #002E25;
-    margin-bottom: 15px;
-}

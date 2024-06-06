@@ -102,10 +102,13 @@ function App() {
     getEvents();
   }, []);
 
-  useEffect(()=>{
-    getMatch();
-    getProfile();
-  }, [user])
+
+    useEffect(()=>{
+      getMatch();
+      getProfile();
+    }, [user])
+ 
+
 
   useEffect(() => {
     document.addEventListener('click', playSound);

@@ -64,12 +64,12 @@ function ChallengeForm({ matches, getMatch }) {
                         <p>{match.pairs}</p>
                         <p>Created by: {match.createdBy?.name ? match.createdBy.name : "No name, no party"}</p>
 
-                        <p>{match.participants.map((participant) => participant.name)}</p>
+                        <p>{match.participants.map((participant) => ` ${participant.name} -`)}</p>
                         <div className="button-position">
 
                         {!checkId(match.participants, user) ? <button className="reserve" onClick={() => handleJoin(match._id)}>Join match</button> : "You are booked"}
 
-                        {checkId(match.participants, user) && <button className="go-back-button" onClick={() => handleUnbook(match._id)}>Unbook</button>}
+                        {checkId(match.participants, user) && <button className="go-back-button1" onClick={() => handleUnbook(match._id)}>Unbook</button>}
                         </div>
                         <div className="delete-match-position">
                         {match.createdBy?.name === user.name && <Link to={`/editmatch/${match._id}`}> <button className="go-back-button">Edit match</button></Link>}

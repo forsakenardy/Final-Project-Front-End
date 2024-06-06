@@ -28,3 +28,13 @@ color: rgba(255, 255, 255, 1);
     justify-content: center;
 
 }
+.go-back-button1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+     width: 120px;
+     height: 40px;
+     color: #FFA53C;
+     background-color: #004D40;
+     border: 1px solid #FFA53C;
+     box-shadow: 8px 8px 0px 0px #002E25
+ }

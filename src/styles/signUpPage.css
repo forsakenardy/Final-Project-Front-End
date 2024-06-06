@@ -32,13 +32,12 @@ height: 30px;
 }
 .sign-page button {
     margin-top: 20px;
-    margin-left: 6vw;
 }
 .center-sign-up-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 6vw;
+
 }
 .sign-up-title {
     display: flex;
