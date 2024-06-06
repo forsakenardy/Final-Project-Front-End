@@ -144,20 +144,21 @@ function Profile({ profile, getProfile }) {
                     </div>
                 ) : (
                     <div className="my-profile">
-                        <div className="left-profile">
                             <img className="profile-image" src={profileCard.image} alt="profile image" />
                             <h2>{profileCard.name}</h2>
-                            <p>email: {profileCard.email}</p>
-                            <h4>phone number: {profileCard.phoneNumber}</h4>
-                            <h4>Location: {profileCard.location}</h4>
-
+                            <h5 className="rank">Rank: <br /> {profileCard.rank}</h5>
+                            <h4 className="blue-color descriptive">Description: </h4>
+                            <h3>{profileCard.description}</h3>
+                            <h4 className="blue-color">email</h4>
+                            <h3>{profileCard.email}</h3>
+                            <h4 className="blue-color">phone number</h4>
+                            <h3>{profileCard.phoneNumber}</h3>
+                            <h4 className="blue-color">Location:</h4>
+                            <h3>{profileCard.location}</h3>
                             <button className="reserve" onClick={handleEditClick}>Edit Profile</button>
-                        </div>
-                        <div className="right-profile">
-                            <h3>Description: </h3>
-                            <p>{profileCard.description}</p>
-                            <h1>Rank: {profileCard.rank}</h1>
-                        </div>
+                           
+                          
+                           
                     </div>
                 )}
             </div>
