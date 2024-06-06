@@ -21,6 +21,9 @@
 .navlinks h4 {
     color: #004D40 ;
 }
+.navlinks h4:hover {
+    border-bottom: 2px solid #004D40;;
+}
 
 .menu-links {
     background-color: #FFA53C;
