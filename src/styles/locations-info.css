@@ -82,11 +82,13 @@
 .locations-rackets {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
 }
 .locations-extra {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 10px;
     min-height: 140px;
 }
 .timetable {
