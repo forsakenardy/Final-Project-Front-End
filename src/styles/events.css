@@ -3,13 +3,14 @@
     width: 100vw;
     height: 72vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 3vh;
     overflow: auto;
 }
 
 .event-card {
-    width: 90vw;
+    width: 280px;
+    height: 400px;
     margin-left: 5vw;
     display: flex;
     flex-direction: column;
@@ -51,7 +52,7 @@ border-bottom-left-radius: 10px;
 border-bottom-right-radius: 10px;
 margin-bottom: 10px;
 margin-top: 20px;
-margin-left: 2vw;
+margin-left: 2%;
 }
 .event-name {
     margin-top: 8px;
@@ -62,8 +63,7 @@ margin-left: 2vw;
     flex-direction: column;
     align-items: start;
     margin-left: 2vw;
-    margin-top: -8vw;
-
+    margin-top: -45px;
 }
 .joined-event h6 {
     color: #004D40;
