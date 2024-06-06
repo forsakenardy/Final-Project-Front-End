@@ -79,6 +79,10 @@ function Profile({ profile, getProfile }) {
             <div>
                 {isEditing ? (
                     <div className="editor">
+                        <div className="edit-profile-title">
+
+                        <h4>Edit profile</h4>
+                        </div>
                         <div className="edit-name">
                             <label >Set New Name:</label>
                             <input
@@ -134,7 +138,7 @@ function Profile({ profile, getProfile }) {
                         </div>
                         <div className="save-cancel-buttons">
                             <button onClick={handleSaveClick}>Save</button>
-                            <button onClick={handleCancelClick}>Cancel</button>
+                            <button className="cancel-edit-profile" onClick={handleCancelClick}>Cancel</button>
                         </div>
 
                     </div>

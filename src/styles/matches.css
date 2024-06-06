@@ -1,22 +1,24 @@
 .matches-create {
-    padding-top: 5vh;
     display: flex;
+    width: 90%;
+    padding: 0px 16px;
     flex-direction: column;
-    gap: 2vh;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    height: 75vh;
+    margin-top: 5%;
+    gap: 22px;
 }
 
 .matches-create label {
-color: #FFA53C;
+color: rgba(255, 255, 255, 1);
+align-items: center;
 }
 
 .matches-create input {
-    background-color: #FFA53C;
+    background-color: rgba(200, 232, 226, 1);
+    height: 30px
 }
 .matches-create select {
-    background-color: #FFA53C;
+    background-color: rgba(200, 232, 226, 1);
+    height: 30px
 }
 
 .matches-create button {
@@ -28,4 +30,9 @@ color: #FFA53C;
     font-size: 12px;
     margin-top: 3vw;
     margin-bottom: 2vw;
+}
+
+.create-match-title {
+    display: flex;
+    justify-content: center;
 }
