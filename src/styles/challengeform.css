@@ -3,17 +3,25 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
+    border: 3px solid #FFA53C;
     margin-top: 10vw;
     border-radius: 10vw;
     width: 90%;
     margin-left: 5vw;
 }
-.matches-to-join button {
+.join-match-button {
     border-radius: 10px;
     width: 17vw;
     height: 6vh;
     color: #FFA53C;
     background-color: #004D40;
     margin-bottom: 2vw;
+}
+.cancel-booking {
+    border-radius: 10px;
+    width: 17vw;
+    height: 6vh;
+    background-color: #004D40;
+    margin-bottom: 2vw;
+    color: rgb(220, 98, 120);
 }

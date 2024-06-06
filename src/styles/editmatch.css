@@ -1,0 +1,38 @@
+.matches-edit {
+    display: flex;
+    width: 90%;
+    padding: 0px 16px;
+    flex-direction: column;
+    margin-top: 5%;
+    gap: 22px;
+}
+.edit-title {
+    display: flex;
+    justify-content: center;
+}
+
+.matches-edit label {
+    color: rgba(255, 255, 255, 1);
+
+}
+
+.matches-edit input {
+    background-color: rgba(200, 232, 226, 1);
+    height: 30px;
+}
+
+.matches-edit select {
+    background-color: rgba(200, 232, 226, 1);
+    height: 30px;
+}
+
+.matches-edit button {
+    border-radius: 10px;
+    width: 17vw;
+    height: 6vh;
+    color: #FFA53C;
+    background-color: #004D40;
+    font-size: 12px;
+    margin-top: 3vw;
+    margin-bottom: 2vw;
+}
