@@ -9,11 +9,12 @@ function Navbar() {
 
 
     const closeMenu = (event) => {
-        if (isPressed && !event.target.closest('.menu-links')) {
+        const profileImage = document.querySelector(".profile1-image")
+        console.log(profileImage)
+        if (isPressed && !event.target.closest('.menu-links') && event.target !== profileImage) {
             setIsPressed(false);
         }
     };
-
 
     useEffect(() => {
         document.addEventListener('mousedown', closeMenu);
