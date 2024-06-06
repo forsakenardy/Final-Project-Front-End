@@ -90,7 +90,7 @@ const requestedForm = {location, day, time, comment}
                     <option value={false}>No</option>
                     <option value={true}>Yes</option>
                 </select>
-                <button type="submit">Let's play!</button>
+                <button className="reserve" type="submit">Let's play!</button>
                
             </form>
         </div>
