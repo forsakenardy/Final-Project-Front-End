@@ -42,10 +42,10 @@ function LoginForm(props) {
                 <input type="email" name="email" value={email} onChange={handleEmail} />
                 <label>Password:</label>
                 <input type="password" name="password" value={password} onChange={handlePassword} />
-                <button type="submit">Login</button>
+                <button className="reserve" type="submit">Login</button>
             </form>
             {errorMessage && <p>{errorMessage}</p>}
-            <p>What are you doing without an account? Hurry and <Link to="/signup">Sign Up</Link> </p>
+            <p>What are you doing without an account? Hurry up and <Link to="/signup">Sign Up</Link> </p>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 .signup-form {
-    background-color: rgb(194, 186, 80);
+    background-color:#004D40; 
     width: 90vw;
     margin-left: 5vw;
     padding-top: 1vh;
@@ -10,6 +10,32 @@
     display: flex;
     flex-direction: column;
 }
+
+.signup-form form {
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+}
 .sign-page {
     height: 72vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.sign-page form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px
+}
+
+.sign-page input:nth-child() {
+height: 30px;
+
+}
+.sign-page button {
+    margin-top: 20px;
+    margin-left: 6vw;
 }
