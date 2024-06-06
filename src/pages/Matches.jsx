@@ -49,9 +49,9 @@ function Matches({ match, locations, getMatch, getLocations}) {
 
 const requestedForm = {location, day, time, comment}
     return (
-        <div >
+        <div className="create-match-page">
             <div className="create-match-title">
-                <h4>Create match</h4>
+                <h2>Create match</h2>
             </div>
             <form className="matches-create" onSubmit={requestedForm ? handleMatchSubmit : "You need to fill the location, day, time and comment"}>
                 <label>Location:</label>
