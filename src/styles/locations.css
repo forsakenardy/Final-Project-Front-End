@@ -3,16 +3,17 @@
     flex-wrap: wrap;
     align-items: start;
     gap: 1.8vh;
-    overflow-y: auto;
-width: 100vw;
+    overflow: auto;
+width: 100vw - 15px;
 height: 70vh;
 padding-top: 5vh;
-padding-left: 7vw;
+padding-left: 15px;
+padding-right: 15px;
 }
 
 .location-cards {
-    width: 40vw;
-    height: 27vh;
+    width: 162px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     background-color: #FFA53C;
@@ -25,21 +26,21 @@ padding-left: 7vw;
 
 .location-image {
     margin-top: 0.5vh;
-    min-height: 10vh;
-    max-height: 10vh;
+    min-height: 100px;
+    max-height: 100px;
     width: 96%;
     margin-left: 2%;
-    height: 20vh;
     border-radius: 10px;
 }
 
 .location-name {
-    width: 38vw;
+    width: 160px ;
     font-size: 20px;
-    height: 4vh;
+    height: 30px;
     text-align: start;
-    margin-top: 0.5vh;
+    margin-top: 5px;
     margin-left: 2%;
+    margin-bottom: 30px;
 
 }
 .h6-locations h4 {
@@ -47,7 +48,7 @@ padding-left: 7vw;
     font-size: 13px;
     line-height: 10px;
     text-align: start;
-    margin-bottom: 2vh;
+    margin-bottom: 15px;
 }
 .h6-locations p{
     margin: 2%;

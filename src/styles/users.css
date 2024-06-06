@@ -1,7 +1,7 @@
 .users {
     display: flex;
     flex-direction: column;
-    gap: 2vw;
+    gap: 10px;
     padding-top: 2vh;
     padding-bottom: 2vh;
     height: 71vh;
@@ -16,7 +16,7 @@ width: 20vw;
 }
 .user-card {
     width: 90vw;
-    height: 8vh;
+    height: 55px;
     margin-left: 5vw;
     display: flex;
     flex-direction: row;
