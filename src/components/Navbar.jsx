@@ -27,9 +27,7 @@ function Navbar() {
     const toggleClass = () => {
         setIsPressed((prevState) => !prevState);
     };
-    const defaultImage = "https://i.ibb.co/yyVDCt2/user-removebg-preview.png"
-
-
+    const defaultImage = "https://i.ibb.co/qjKcLX3/usuario-removebg-preview.png"
 
     return (
         <>

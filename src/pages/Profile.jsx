@@ -68,11 +68,13 @@ function Profile({ profile, getProfile }) {
         }));
     };
 
+
+
     if (!profileCard) {
         return <div><img className="ball2" src="https://i.ibb.co/WKTHyR0/white-ball.png" alt="" /></div>;
     }
 
-    const defaultImage = "https://c0.klipartz.com/pngpicture/81/570/gratis-png-perfil-logo-iconos-de-computadora-usuario-usuario.png"
+    const defaultImage = "https://i.ibb.co/qjKcLX3/usuario-removebg-preview.png"
 
     return (
         <div className="profile">
@@ -144,7 +146,7 @@ function Profile({ profile, getProfile }) {
                     </div>
                 ) : (
                     <div className="my-profile">
-                            <img className="profile-image" src={profileCard.image} alt="profile image" />
+                            <img className="profile-image" src={profileCard.image ?profileCard.image : defaultImage } alt="profile image" />
                             <h2>{profileCard.name}</h2>
                             <h5 className="rank">Rank: <br /> {profileCard.rank}</h5>
                             <h4 className="blue-color descriptive">Description: </h4>
