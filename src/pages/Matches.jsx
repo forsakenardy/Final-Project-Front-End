@@ -34,7 +34,6 @@ function Matches({ match, locations, getMatch, getLocations}) {
 
        e.preventDefault();
         const requestBody = { location, day, time, comment, pairs, createdBy: user._id}; 
-        console.log(requestBody)
         axios.post(`${API_URL}/matches/`, requestBody)
             .then((data) => {
                 getMatch();
@@ -42,8 +41,6 @@ function Matches({ match, locations, getMatch, getLocations}) {
 
             })
             .catch((error) => {
-
-                console.log("there's been some kind of error", error)
             })
     }
 

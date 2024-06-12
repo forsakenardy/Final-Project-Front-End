@@ -24,29 +24,27 @@ function ChallengeForm({ matches, getMatch }) {
             { userId: user._id }
         )
             .then(() => {
-                console.log("user joined the match");
+
                 getMatch()
             })
-            .catch((error) => { console.log(error) })
     }
 
     const handleUnbook = (matchId) => {
         axios.put(`${API_URL}/matches/cancel/${matchId}`, { userId: user._id })
             .then(() => {
-                console.log("user removed from the match")
                 getMatch()
             })
-            .catch((error) => { console.log(error) })
+
     }
 
 
     const handleCancelMatch = (matchId) => {
         axios.delete(`${API_URL}/matches/${matchId}/${user._id}`)
             .then(() => {
-                console.log("match deleted")
+
                 getMatch()
             })
-            .catch(() => console.log("error deleting the match"))
+
 
     }
 

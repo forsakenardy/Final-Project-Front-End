@@ -43,7 +43,6 @@ function App() {
       const matches = response.data;
       setMatches(matches)
     } catch (error) {
-      console.log("There is an error creating a new match", error)
     }
   };
 
@@ -57,7 +56,6 @@ function App() {
       const locations = response.data;
       setLocations(locations);
     } catch (error) {
-      console.log("there's an error", error);
     }
   };
 
@@ -71,7 +69,6 @@ function App() {
       const events = response.data;
       setEvents(events);
     } catch (error) {
-      console.log("there's an error", error);
     }
   };
 
@@ -85,7 +82,6 @@ function App() {
       const profile = response.data;
       setProfile(profile);
     } catch (error) {
-      console.log("there's an error", error);
     }
   };
 

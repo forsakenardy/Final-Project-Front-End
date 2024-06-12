@@ -16,7 +16,6 @@ function LoginForm(props) {
     const { storeToken, authenticateUser } = useContext(AuthContext);
 
     const handleLoginSubmit = (e) => {
-        console.log("login");
         e.preventDefault();
         const requestBody = { email, password };
         axios.post(`${API_URL}/auth/login`, requestBody)

@@ -29,7 +29,6 @@ function Profile({ profile, getProfile }) {
                 setEditedProfile(profile[currentIndex]);
                 setOriginalProfile(profile[currentIndex]);
             } else {
-                console.error("Profile not found");
                 navigate("/404");
             }
         }
@@ -50,7 +49,6 @@ function Profile({ profile, getProfile }) {
             setIsEditing(false);
             setUser(response.data.user)
         } catch (error) {
-            console.error("Failed to update profile:", error);
         }
     };
 

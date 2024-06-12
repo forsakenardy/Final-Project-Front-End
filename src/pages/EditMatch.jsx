@@ -28,7 +28,6 @@ function EditMatch({ getMatch, locations }) {
     const handleEdit = (e, matchId) => {
         e.preventDefault();
         const requestBody = { location, day, time, comment, pairs, createdBy: user._id };
-        console.log(requestBody)
         axios.put(`${API_URL}/matches/${matchId}`, requestBody)
             .then((data) => {
                 getMatch();
@@ -37,7 +36,7 @@ function EditMatch({ getMatch, locations }) {
             })
             .catch((error) => {
 
-                console.log("there's been some kind of error", error)
+
             })
     }
 
