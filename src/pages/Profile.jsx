@@ -46,7 +46,6 @@ function Profile({ profile, getProfile }) {
             if (!response.data) {
                 throw new Error('Failed to update profile');
             }
-            console.log("this is user", profile);
             getProfile();
             setIsEditing(false);
             setUser(response.data.user)

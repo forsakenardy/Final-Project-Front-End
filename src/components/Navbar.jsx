@@ -10,7 +10,6 @@ function Navbar() {
 
     const closeMenu = (event) => {
         const profileImage = document.querySelector(".profile1-image")
-        console.log(profileImage)
         if (isPressed && !event.target.closest('.menu-links') && event.target !== profileImage) {
             setIsPressed(false);
         }

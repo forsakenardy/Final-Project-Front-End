@@ -41,7 +41,6 @@ function App() {
       }
       const response = await axios.get(`${API_URL}/matches/`, { headers: { Authorization: `Bearer ${storedToken}` } });
       const matches = response.data;
-      console.log("matches taken", matches);
       setMatches(matches)
     } catch (error) {
       console.log("There is an error creating a new match", error)
@@ -56,7 +55,6 @@ function App() {
       }*/
       const response = await axios.get(`${API_URL}/locations/`, /*{ headers: { Authorization: `Bearer ${storedToken}` } }*/);
       const locations = response.data;
-      console.log("data is good", locations);
       setLocations(locations);
     } catch (error) {
       console.log("there's an error", error);
@@ -71,7 +69,6 @@ function App() {
       }*/
       const response = await axios.get(`${API_URL}/events/`,/*{ headers: { Authorization: `Bearer ${storedToken}` } }*/);
       const events = response.data;
-      console.log("data is good", events);
       setEvents(events);
     } catch (error) {
       console.log("there's an error", error);
@@ -86,7 +83,6 @@ function App() {
       }
       const response = await axios.get(`${API_URL}/users/`, { headers: { Authorization: `Bearer ${storedToken}` } });
       const profile = response.data;
-      console.log("data is good", profile);
       setProfile(profile);
     } catch (error) {
       console.log("there's an error", error);
