@@ -109,7 +109,17 @@ text-align: center;
     justify-content: space-evenly;
     align-items: center;
 }
-
+.mute {position: absolute;
+    top: 10vh;
+    right: 0;
+    font-size: 10px;
+     width: 60px;
+     height: 20px;
+     color: #FFA53C;
+     background-color: #004D40;
+     border: 1px solid #FFA53C;
+     box-shadow: 8px 8px 0px 0px #002E25
+}
 
 @media (min-width: 680px) {
     .ball1 {

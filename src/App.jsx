@@ -25,12 +25,13 @@ import { useContext } from 'react';
 const API_URL = import.meta.env.VITE_API_URL;
 
 function App() {
-  const {user} = useContext(AuthContext)
-  
+  const { user } = useContext(AuthContext);
+
   const [locations, setLocations] = useState([]);
   const [events, setEvents] = useState([]);
   const [matches, setMatches] = useState([]);
   const [profile, setProfile] = useState([]);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef(null);
 
   const getMatch = async () => {
@@ -41,34 +42,29 @@ function App() {
       }
       const response = await axios.get(`${API_URL}/matches/`, { headers: { Authorization: `Bearer ${storedToken}` } });
       const matches = response.data;
-      setMatches(matches)
+      setMatches(matches);
     } catch (error) {
+      // Handle error
     }
   };
 
   const getLocations = async () => {
     try {
-      const storedToken = localStorage.getItem("authToken");
-     /* if0 (!storedToken) {
-        throw new Error("No auth token found");
-      }*/
-      const response = await axios.get(`${API_URL}/locations/`, /*{ headers: { Authorization: `Bearer ${storedToken}` } }*/);
+      const response = await axios.get(`${API_URL}/locations/`);
       const locations = response.data;
       setLocations(locations);
     } catch (error) {
+      // Handle error
     }
   };
 
   const getEvents = async () => {
     try {
-      /*const storedToken = localStorage.getItem("authToken");
-      if (!storedToken) {
-        throw new Error("No auth token found");
-      }*/
-      const response = await axios.get(`${API_URL}/events/`,/*{ headers: { Authorization: `Bearer ${storedToken}` } }*/);
+      const response = await axios.get(`${API_URL}/events/`);
       const events = response.data;
       setEvents(events);
     } catch (error) {
+      // Handle error
     }
   };
 
@@ -82,11 +78,17 @@ function App() {
       const profile = response.data;
       setProfile(profile);
     } catch (error) {
+      // Handle error
     }
   };
 
-  const playSound = () => {
-    audioRef.current.play();
+  const toggleSound = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
   };
 
   useEffect(() => {
@@ -94,24 +96,17 @@ function App() {
     getEvents();
   }, []);
 
-
-    useEffect(()=>{
-      getMatch();
-      getProfile();
-    }, [user])
- 
-
-
   useEffect(() => {
-    document.addEventListener('click', playSound);
-    return () => {
-      document.removeEventListener('click', playSound);
-    };
-  }, []);
+    getMatch();
+    getProfile();
+  }, [user]);
 
   return (
     <>
       <Navbar profile={profile} />
+      <button className='mute' onClick={toggleSound}>
+        {isPlaying ? 'Mute' : 'Unmute'}
+      </button>
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/locations' element={<Locations locations={locations} />} />

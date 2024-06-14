@@ -26,7 +26,7 @@ function LocationInfo({ locations, getLocations }) {
                 const storedReservedIndices = JSON.parse(localStorage.getItem("reservedIndices")) || [];
                 setReservedIndices(storedReservedIndices);
             } else {
-                console.error("Location not found");
+
                 navigate("/404");
             }
         }
@@ -48,11 +48,11 @@ function LocationInfo({ locations, getLocations }) {
                     localStorage.setItem("reservedIndices", JSON.stringify(updatedReservedIndices));
                     getLocations();
                 } else {
-                    console.error("Failed to update reservation status");
+
                 }
             }
         } catch (error) {
-            console.error("Error:", error);
+
         }
     };
 
@@ -70,10 +70,10 @@ function LocationInfo({ locations, getLocations }) {
                 localStorage.setItem("reservedIndices", JSON.stringify(updatedReservedIndices));
                 getLocations();
             } else {
-                console.error("Failed to update reservation status");
+
             }
         } catch (error) {
-            console.error("Error:", error);
+
         }
     };
 

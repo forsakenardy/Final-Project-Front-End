@@ -25,7 +25,7 @@ function LoginForm(props) {
                 navigate('/')
             })
             .catch((error) => {
-                const errorDescription = error.message;
+                const errorDescription = "Your email and password do not match";
                 setErrorMessage(errorDescription);
             })
     };
